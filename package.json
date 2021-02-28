@@ -19,6 +19,7 @@
     "@react-navigation/drawer": "^5.12.4",
     "@react-navigation/native": "~5.8.10",
     "@react-navigation/stack": "~5.12.8",
+    "axios": "^0.21.1",
     "core-js": "^3.9.0",
     "d3-scale": "^3.2.3",
     "d3-shape": "^2.0.0",

@@ -1,7 +1,8 @@
 export const items = [
     {
-      title: "Subtext to find out more about the day",
-      subtitle: "On the day",
+    //   title: "Subtext to find out more about the day",
+      title: "The days schedule and information",
+      subtitle: "About the day",
       picture: require("../assets/home/chanel.jpg"),
       top: 0,
       route: 'InformationScreen',
@@ -14,27 +15,27 @@ export const items = [
       top: 0,
     },
     {
-      title: "View seating arrangments",
+      title: "View seating plans",
       subtitle: "Tables",
       picture: require("../assets/home/laura-chouette-NFrPPyGe5q0-unsplash-with-gradient.jpg"),
       route: 'TableScreen',
-      top: 0,
+      top: 20,
     },
     {
       title: "View places near the area",
-      subtitle: "Accomodation",
+      subtitle: "Accommodation",
       picture: require("../assets/home/butsarakham-buranaworachot-au6Gddf1pZQ-unsplash.jpg"),
       route: 'AccommodationScreen',
       top: 0,
     },
 
-    {
-      title: "Todo",
-      subtitle: "Message Board",
-      picture: require("../assets/home/christopher-campbell-A3QXXEfcA1U-unsplash.jpg"),
-      route: 'MessageBoardScreen',
-      top: 30,
-    },
+    // {
+    //   title: "Todo",
+    //   subtitle: "Message Board",
+    //   picture: require("../assets/home/christopher-campbell-A3QXXEfcA1U-unsplash.jpg"),
+    //   route: 'MessageBoardScreen',
+    //   top: 30,
+    // },
         // {
     //   title: "Haute Couture",
     //   subtitle: "FALL-WINTER 2020/21",

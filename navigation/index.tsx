@@ -9,13 +9,14 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
-import LandingScreen from '../screens/landing';
 import BookTableScreen from '../screens/bookTable';
 import SelectedItemScreen from '../screens/menu/selectedItemScreen';
 import Rainbow from '../screens/Rainbow';
 import Duolingo from '../screens/Duolingo';
 
 import Home from '../screens/home';
+import LandingScreen from '../screens/landing';
+import FoodScreen from '../screens/food'
 import InformationScreen from '../screens/information'
 // FoodScreen // use carousel from landing
 // TableScreen
@@ -26,8 +27,8 @@ import InformationScreen from '../screens/information'
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-	const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
-	// const theme = CustomDefaultTheme
+	// const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
+	const theme = CustomDefaultTheme
 	// const theme = CustomDarkTheme
 	return (
 		<NavigationContainer linking={LinkingConfiguration} theme={theme}>
@@ -46,8 +47,8 @@ function RootNavigator() {
 		<Drawer.Navigator screenOptions={{ headerShown: false }}>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="InformationScreen" component={InformationScreen} />
-
-
+            <Drawer.Screen name="FoodScreen" component={FoodScreen} />
+            <Drawer.Screen name="LandingScreen" component={LandingScreen} />
 
         {/* <Drawer.Screen name="Rainbow" component={Rainbow} /> 
             <Drawer.Screen name="Duolingo" component={Duolingo} />*/}

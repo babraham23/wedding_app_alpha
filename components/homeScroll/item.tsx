@@ -8,7 +8,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 const { width, height } = Dimensions.get("window");
-export const MIN_HEIGHT = 128;
+export const MIN_HEIGHT = 208;
 export const MAX_HEIGHT = height / 2;
 const styles = StyleSheet.create({
   container: {
@@ -103,10 +103,10 @@ const Item = ({
           style={[styles.picture, pictureStyle]}
         />
         <View style={styles.titleContainer}>
-          <Text style={styles.subtitle}>{subtitle.toUpperCase()}</Text>
+          <Text style={styles.title}>{subtitle.toUpperCase()}</Text>
           <View style={styles.mainTitle}>
             <Animated.View style={titleStyle}>
-              <Text style={styles.title}>{title.toUpperCase()}</Text>
+              <Text style={styles.subtitle}>{title.toUpperCase()}</Text>
             </Animated.View>
           </View>
         </View>

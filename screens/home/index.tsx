@@ -11,7 +11,7 @@ import { items } from "../../_models/homeScroll.model";
 
 const styles = StyleSheet.create({
   container: {
-    height: (items.length + 1) * MAX_HEIGHT,
+    height: (items.length) * MAX_HEIGHT,
     backgroundColor: "black",
   },
 });

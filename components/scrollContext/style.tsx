@@ -12,12 +12,12 @@ export const styles = StyleSheet.create({
 		alignContent: 'center',
 		// backgroundColor: '#fff',
 		shadowRadius: 0,
-		shadowOffset: {
-			width: 0.5,
-			height: 1,
-		},
+		// shadowOffset: {
+		// 	width: 0.5,
+		// 	height: 1,
+		// },
 		zIndex: 9,
-        borderBottomWidth: 0.5,
+        // borderBottomWidth: 0.5,
 	},
 	headerTitle: {
 		display: 'flex',
@@ -64,9 +64,9 @@ export const styles = StyleSheet.create({
 		fontWeight: '600',
     },
     menu: {
-        height: 40,
+        height: 25,
         width: 40,
-        // resizeMode: 'contain',
+        resizeMode: 'stretch',
         marginLeft: 25
     },
 });

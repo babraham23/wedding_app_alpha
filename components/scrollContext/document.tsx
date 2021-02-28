@@ -12,7 +12,7 @@ export const Document = ({ children, headerLeft, title }: any) => {
 				title={title}
 				headerLeft={headerLeft}
 			/>
-			<ScrollView contentContainerStyle={[styles.container, { backgroundColor: colors.card }]}>{children}</ScrollView>
+			<ScrollView contentContainerStyle={[styles.container, { backgroundColor: colors.background }]}>{children}</ScrollView>
 		</>
 	);
 };

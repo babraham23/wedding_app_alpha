@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { MediumText, LightText, BoldText, Separator } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
@@ -12,10 +12,10 @@ const InformationScreen = ({ navigation }: any) => {
     // const title2 = '  the Day';
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
 	return (
-		<ScrollContextProvider headerTitle={title}>
+		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
-                <BoldText>{title}</BoldText>
-                <Separator />
+                <BoldText style={styles.title}>{title}</BoldText>
+                {/* <Separator /> */}
 
                 <View style={styles.aboutWrapper}>
                     {/* <BoldText style={styles.header} center>Information</BoldText> */}
@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 20
     },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+      },
     scheduleWrapper: {
         paddingTop: 20,
     },
@@ -52,6 +57,10 @@ const styles = StyleSheet.create({
     header: {
         paddingTop: 30,
         // paddingBottom: 10
+    },
+    title: {
+        paddingLeft: 20,
+        paddingBottom: 10
     }
 });
 

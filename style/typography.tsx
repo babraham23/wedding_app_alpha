@@ -3,26 +3,27 @@ import { Text, StyleSheet, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 
-export const BoldText = ({ style, children, color, fontSize }: any) => {
+export const BoldText = ({ style, children, color, fontSize, center }: any) => {
     const { colors }: any = useTheme()
     const styles = StyleSheet.create({
         BoldText: { 
             fontFamily: 'Bold', 
             color: color ? color : colors.text,
             fontSize: fontSize ? fontSize : 30,
-
+            textAlign: center ? 'center' : 'left'
         }
     })
     return <Text style={[style, styles.BoldText]} >{children}</Text>
 }
 
-export const MediumText = ({ style, children, color, fontSize }: any) => {
+export const MediumText = ({ style, children, color, fontSize, center }: any) => {
     const { colors }: any = useTheme()
     const styles = StyleSheet.create({
         MediumText: { 
             fontFamily: 'Medium', 
             color: color ? color : colors.text,
-            fontSize: fontSize ? fontSize : 33,
+            fontSize: fontSize ? fontSize : 16,
+            textAlign: center ? 'center' : 'left'
         }
     })
     return <Text style={[style, styles.MediumText]} >{children}</Text>

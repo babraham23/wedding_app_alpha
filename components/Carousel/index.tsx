@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text, Dimensions } from 'react-native';
 import { Stat } from './Stat';
 import { Slide } from './Slide';
 import { styles } from './styles';
@@ -23,7 +23,6 @@ export const Carousel = (props: any) => {
 	};
 
 	const getInterval = (offset: any) => {
-        console.log('offset -->', offset)
 		for (let i = 1; i <= intervals; i++) {
 			if (offset + 1 < (width / intervals) * i) {
 				return i;
@@ -50,13 +49,15 @@ export const Carousel = (props: any) => {
 			</Text>
 		);
 	}
-
+    const screenWidrh = Dimensions.get('window').width
 	return (
+        <>
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
 			<ScrollView
 				horizontal={true}
 				contentContainerStyle={{ ...styles.scrollView, width: `${100 * intervals}%` }}
 				showsHorizontalScrollIndicator={false}
+                snapToInterval={screenWidrh}
 				onContentSizeChange={(w, h) => init(w)}
 				onScroll={(data: any) => {
 					setWidth(data.nativeEvent.contentSize.width);
@@ -77,6 +78,8 @@ export const Carousel = (props: any) => {
 			</ScrollView>
 			<View style={styles.bullets}>{bullets}</View>
 		</View>
+        <Text>Static</Text>
+        </>
 	);
 };
 

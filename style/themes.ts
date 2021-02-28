@@ -9,7 +9,7 @@ export const CustomDefaultTheme = {
         ...NavigationDefaultTheme.colors,
         // ...PaperDefaultTheme.colors,
         // accent: '#22cbff',
-        background: '#FEFDFD',
+        // background: '#FEFDFD',
         border: '#AFAFB2',
         // // card: '#BADE71',
         // text: '#232323',
@@ -32,7 +32,7 @@ export const CustomDarkTheme = {
         // ...PaperDarkTheme.colors,
         // accent: '#22cbff',
         border: '#AFAFB2',
-        card: '#292929',
+        // card: '#292929',
         // text: '#f8d0a8',
         primary: '#014421',
 

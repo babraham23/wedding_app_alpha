@@ -27,27 +27,12 @@ export const statsData = [
 
 export const slideData = [
     {
-        title: 'McDonalds',
+        title: 'Option 1',
     },
     {
-        title: 'Burger King',
+        title: 'Option 2',
     },
     {
-        title: 'Latif',
-    },
-    {
-        title: 'About feature Y.',
-    },
-    {
-        title: 'About feature Y.',
-    },
-    {
-        title: 'About feature Y.',
-    },
-    {
-        title: 'About feature Y.',
-    },
-    {
-        title: 'About feature Y.',
+        title: 'Option 3',
     },
 ]

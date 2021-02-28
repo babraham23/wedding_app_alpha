@@ -4,6 +4,7 @@ import { useScroller } from './scrollContext'
 import { styles } from './style'
 import { useTheme } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export const Header = (props: any) => {
@@ -39,14 +40,15 @@ export const Header = (props: any) => {
     <View style={{
       ...styles.header,
       shadowOpacity: opacity,
-      backgroundColor: colors.card,
+      backgroundColor: colors.background,
       borderBottomColor: colors.separator,
       shadowColor: colors.separator,
     }}>
 
-      <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.9} style={styles.headerLeft}>
+      <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.9} style={styles.headerLeft}>
         {/* {props.headerLeft !== undefined && props.headerLeft} */}
-        <Image source={require('../../assets/images/menu.png')} style={styles.menu} />
+        {/* <Image source={require('../../assets/images/menu.png')} style={styles.menu} /> */}
+        <Ionicons size={30} style={{ marginLeft: 20 }} name={'arrow-back-sharp'} color={colors.text}  />
       </TouchableOpacity>
 
       <Animated.View
@@ -62,7 +64,7 @@ export const Header = (props: any) => {
 
       <View style={styles.headerRight}>
         {/* {props.headerRight !== undefined && props.headerRight} */}
-        <Image source={require('../../assets/images/mcdonalds_logo.png')} style={styles.menu} />
+        {/* <Image source={require('../../assets/images/mcdonalds_logo.png')} style={styles.menu} /> */}
       </View>
       
     </View>
