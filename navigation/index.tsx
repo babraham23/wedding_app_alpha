@@ -18,6 +18,7 @@ import Home from '../screens/home';
 import LandingScreen from '../screens/landing';
 import FoodScreen from '../screens/food'
 import InformationScreen from '../screens/information'
+import TableScreen from '../screens/tables'
 // FoodScreen // use carousel from landing
 // TableScreen
 // AccommodationScreen
@@ -48,7 +49,7 @@ function RootNavigator() {
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="InformationScreen" component={InformationScreen} />
             <Drawer.Screen name="FoodScreen" component={FoodScreen} />
-            <Drawer.Screen name="LandingScreen" component={LandingScreen} />
+            <Drawer.Screen name="TableScreen" component={TableScreen} />
 
         {/* <Drawer.Screen name="Rainbow" component={Rainbow} /> 
             <Drawer.Screen name="Duolingo" component={Duolingo} />*/}
