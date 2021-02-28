@@ -17,8 +17,10 @@ export default function useCachedResources() {
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
           'Medium': require('../assets/fonts//SF-UI.ttf'),
-          'Bold': require('../assets/fonts/SF-UI-Bold.ttf'),
+        //   'Bold': require('../assets/fonts/SF-UI-Bold.ttf'),
           'Light': require('../assets/fonts/SF-UI-Light.ttf'),
+          'Regular': require('../assets/fonts/palatino.otf'),
+          'Bold': require('../assets/fonts/palatinoBold.otf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

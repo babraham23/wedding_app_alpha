@@ -13,8 +13,15 @@ import LandingScreen from '../screens/landing';
 import BookTableScreen from '../screens/bookTable';
 import SelectedItemScreen from '../screens/menu/selectedItemScreen';
 import Rainbow from '../screens/Rainbow';
-import Duolingo from '../screens/Duolingo'
-import Home from '../screens/home'
+import Duolingo from '../screens/Duolingo';
+
+import Home from '../screens/home';
+import InformationScreen from '../screens/information'
+// FoodScreen // use carousel from landing
+// TableScreen
+// AccommodationScreen
+// MessageBoardScreen
+
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -37,9 +44,13 @@ function RootNavigator() {
 	const Drawer = createDrawerNavigator();
 	return (
 		<Drawer.Navigator screenOptions={{ headerShown: false }}>
-            {/* <Drawer.Screen name="Rainbow" component={Rainbow} /> 
-            <Drawer.Screen name="Duolingo" component={Duolingo} />*/}
             <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="InformationScreen" component={InformationScreen} />
+
+
+
+        {/* <Drawer.Screen name="Rainbow" component={Rainbow} /> 
+            <Drawer.Screen name="Duolingo" component={Duolingo} />*/}
         {/* <Drawer.Screen name="LandingScreen" component={LandingScreen} />
 			<Drawer.Screen name="BookTableScreen" component={BookTableScreen} />
 			<Drawer.Screen name="SelectedItemScreen" component={SelectedItemScreen} />

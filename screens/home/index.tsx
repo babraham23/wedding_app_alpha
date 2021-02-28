@@ -16,13 +16,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   const y = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
     onScroll: ({ contentOffset: { y: value } }) => {
       y.value = value;
     },
   });
+  const handleNavigate = (route: any) => {
+      navigation.navigate(route)
+  }
   return (
     <>
       <StatusBar hidden />
@@ -34,7 +37,7 @@ const Home = () => {
 >
         <Animated.View style={styles.container}>
           {items.map((item, index) => (
-            <Item item={item} key={index} y={y} index={index} />
+            <Item onPress={() => handleNavigate(item.route)} item={item} key={index} y={y} index={index} />
           ))}
         </Animated.View>
       </Animated.ScrollView>

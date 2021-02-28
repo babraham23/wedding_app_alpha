@@ -57,12 +57,14 @@ interface ItemProps {
   index: number;
   y: Animated.SharedValue<number>;
   item: Item;
+  onPress: any;
 }
 
 const Item = ({
   y,
   index,
   item: { title, subtitle, picture, top },
+  onPress,
 }: ItemProps) => {
   const style = useAnimatedStyle(() => {
     return {
@@ -94,7 +96,7 @@ const Item = ({
     ),
   }));
   return (
-    <TouchableWithoutFeedback onPress={() => Alert.alert("Pressed!")}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <Animated.View style={[styles.container, style]}>
         <Animated.Image
           source={picture}
