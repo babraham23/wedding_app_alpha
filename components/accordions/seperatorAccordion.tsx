@@ -39,8 +39,7 @@ const Accordion = ({ title, ProductAllergens, style, noTopBorder, onChangeText }
     };
     
 	return (
-		<View style={[style]}>
-
+		<View style={[style, { borderBottomWidth: 0.5, borderBottomColor: '#C8C7CC', marginHorizontal: 10 }]}>
 			<TouchableWithoutFeedback onPress={() => toggleListItem()}>
 				<View style={styles.titleContainer}>
                     {!open ?
@@ -76,8 +75,8 @@ const styles = StyleSheet.create({
     titleContainer: {
         width: '100%',
         alignItems: 'flex-end',
-        borderBottomWidth: 0.5, 
-        borderBottomColor: '#C8C7CC', 
+        // borderBottomWidth: 0.5, 
+        // borderBottomColor: '#C8C7CC', 
         paddingBottom: 10,
 	},
 	bodyBackground: {
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
 	},
 	bodyContainer: {
 		position: 'absolute',
-        bottom: 0,
+        // bottom: 0,
         width: '100%'
     },
     icon: {

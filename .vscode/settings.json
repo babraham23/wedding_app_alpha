@@ -1,9 +1,9 @@
 {
     "workbench.colorCustomizations": {
-        "titleBar.activeForeground": "#000",
-        "titleBar.inactiveForeground": "#000",
-        "titleBar.activeBackground": "#4DD2A5",
-        "titleBar.inactiveBackground": "#4DD2A5"
+        "titleBar.activeForeground": "#fff",
+        "titleBar.inactiveForeground": "#fff",
+        "titleBar.activeBackground": "#014421",
+        "titleBar.inactiveBackground": "#014421"
     },
     "editor.fontFamily": "Monaco, 'Courier New', monospace",
     // "editor.fontWeight": "400",

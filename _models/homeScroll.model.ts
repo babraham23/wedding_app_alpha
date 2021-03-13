@@ -1,33 +1,33 @@
 export const items = [
     {
     //   title: "Subtext to find out more about the day",
-      title: "The days schedule and information",
+    //   title: "The days schedule and information",
       subtitle: "About the day",
-      picture: require("../assets/home/chanel.jpg"),
+      picture: require("../assets/home/about.jpg"),
       top: 0,
       route: 'InformationScreen',
     },
     {
-      title: "Select your food",
-      subtitle: "Food",
-      picture: require("../assets/home/sonnie-hiles-pU4J5VFnqCQ-unsplash-with-gradient.jpg"),
+    //   title: "Select your food",
+      subtitle: "Food & Drink",
+      picture: require("../assets/home/food.jpg"),
       route: 'FoodScreen',
       top: 0,
     },
     {
-      title: "View seating plans",
-      subtitle: "Tables",
-      picture: require("../assets/home/laura-chouette-NFrPPyGe5q0-unsplash-with-gradient.jpg"),
+    //   title: "View seating plans",
+      subtitle: "Tables and Seating Arrangments",
+      picture: require("../assets/home/table.jpg"),
       route: 'TableScreen',
       top: 20,
     },
-    {
-      title: "View places near the area",
-      subtitle: "Accommodation",
-      picture: require("../assets/home/butsarakham-buranaworachot-au6Gddf1pZQ-unsplash.jpg"),
-      route: 'AccommodationScreen',
-      top: 0,
-    },
+    // {
+    //   title: "View places near the area",
+    //   subtitle: "Accommodation",
+    //   picture: require("../assets/home/accomodation.jpg"),
+    //   route: 'AccommodationScreen',
+    //   top: 0,
+    // },
 
     // {
     //   title: "Todo",

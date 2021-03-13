@@ -45,10 +45,12 @@ export const Header = (props: any) => {
       shadowColor: colors.separator,
     }}>
 
-      <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.9} style={styles.headerLeft}>
+    <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.9} style={styles.headerLeft}>
+      {/* <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.9} style={styles.headerLeft}> */}
         {/* {props.headerLeft !== undefined && props.headerLeft} */}
         {/* <Image source={require('../../assets/images/menu.png')} style={styles.menu} /> */}
-        <Ionicons size={34} style={{ marginLeft: 20 }} name={'ios-menu-outline'} color={colors.text}  />
+        {/* <Ionicons size={34} style={{ marginLeft: 20 }} name={'ios-menu-outline'} color={colors.text}  /> */}
+        <Ionicons size={34} style={{ marginLeft: 20 }} name={'arrow-back-sharp'} color={colors.text}  />
       </TouchableOpacity>
 
       <Animated.View

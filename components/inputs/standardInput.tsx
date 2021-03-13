@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
 	},
 	action: {
 		flexDirection: 'row',
-		marginTop: 10,
-		borderBottomWidth: 1,
+		// marginTop: 10,
+		// borderBottomWidth: 1,
         paddingBottom: 5,
     },
     iconWrapper: {
-		borderRightWidth: 1,
+		// borderRightWidth: 1,
         paddingLeft: 5,
         paddingRight: 10
     },

@@ -49,8 +49,8 @@ export const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 17,
-		fontWeight: '600',
 		textAlign: 'center',
+        fontFamily: 'Bold'
 	},
 	headerText: {
 		textAlign: 'center',

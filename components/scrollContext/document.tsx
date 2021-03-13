@@ -19,7 +19,7 @@ export const Document = ({ children, headerLeft, title }: any) => {
 
 const styles = StyleSheet.create({
 	container: {
-        flex: 1,
+        // flex: 1,
         // padding: 10
 	},
 });

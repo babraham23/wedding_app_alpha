@@ -43,5 +43,5 @@ export const LightText = ({ style, children, color, fontSize, numberOfLines }: a
 
 export const Separator = ({ style, color }: any) => {
     const { colors }: any = useTheme()
-	return <View style={[style, { borderBottomWidth: 0.5, borderBottomColor: color ? color : colors.separator, marginVertical: 20 }]} />;
+	return <View style={[style, { borderBottomWidth: 0.5, borderBottomColor: color ? color : colors.separator, marginBottom: 20, marginTop: 7 }]} />;
 }

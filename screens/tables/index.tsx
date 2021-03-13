@@ -22,7 +22,7 @@ import SeperatorAccordion from '../../components/accordions/seperatorAccordion'
 const TableScreen = ({ navigation }: any) => {
     const { colors } = useTheme();
     const [ filteredData, setFilteredData ] = React.useState<any>(guests);
-    const title = 'Table Plan';
+    const title = 'Seating Arrangement';
     const searchData = (text: any) => {
 		const FILTERED_DATA = guests.filter((item: any) => {
 			const itemData = item.Guest.toLowerCase();

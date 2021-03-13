@@ -14,6 +14,7 @@ export const CustomDefaultTheme = {
         // // card: '#BADE71',
         // text: '#232323',
         primary: '#014421',
+        seperator: '#e2e3e4',
 
         blue: '#22cbff',
         blue_grad: '#4C9CD4',
@@ -35,6 +36,8 @@ export const CustomDarkTheme = {
         // card: '#292929',
         // text: '#f8d0a8',
         primary: '#014421',
+        seperator: '#54545899',
+
 
         blue: '#22cbff',
         blue_grad: '#4C9CD4',

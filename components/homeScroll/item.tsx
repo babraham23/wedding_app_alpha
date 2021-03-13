@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 32,
     fontWeight: "500",
+    fontFamily: 'Bold', 
+    textShadowColor: '#000',
+    textShadowOffset:{ width: 1, height: 1},
+    textShadowRadius: 0,
   },
   titleContainer: {
     maxHeight: MAX_HEIGHT * 0.61,
@@ -43,6 +47,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     fontWeight: "bold",
+    fontFamily: 'Bold', 
+    textShadowColor: '#000',
+    textShadowOffset:{ width: 1, height: 1},
+    textShadowRadius: 0,
   },
 });
 
@@ -65,7 +73,7 @@ const Item = ({
   index,
   item: { title, subtitle, picture, top },
   onPress,
-}: ItemProps) => {
+}: any) => {
   const style = useAnimatedStyle(() => {
     return {
       height: interpolate(
@@ -106,7 +114,7 @@ const Item = ({
           <Text style={styles.title}>{subtitle.toUpperCase()}</Text>
           <View style={styles.mainTitle}>
             <Animated.View style={titleStyle}>
-              <Text style={styles.subtitle}>{title.toUpperCase()}</Text>
+              {/* <Text style={styles.subtitle}>{title.toUpperCase()}</Text> */}
             </Animated.View>
           </View>
         </View>

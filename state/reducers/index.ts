@@ -1,22 +1,8 @@
 import { combineReducers } from 'redux';
-import basketReducer from './basketReducer';
-import bookingTypeReducer from './bookingTypeReducer';
-import locationReducer from './locationReducer';
-import setClientReducer from './setClientReducer';
-import toggleLoading from './toggleLoading';
-import timeSlotReducer from './timeSlotReducer';
-import addOnReducer from './addOnReducer';
-import removeButtonReducer from './removeButtonReducer';
+import foodReducer from './foodReducer';
 
 const appReducers = combineReducers({
-    basketReducer,
-    bookingTypeReducer,
-    locationReducer,
-    setClientReducer,
-    toggleLoading,
-    timeSlotReducer,
-    addOnReducer,
-    removeButtonReducer
+    foodReducer
 });
 
 export default appReducers;
