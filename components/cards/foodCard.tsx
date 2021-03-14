@@ -10,7 +10,7 @@ const FoodCard = ({ style, title }: any) => {
 	return (
 		<View style={style}>
             <View style={styles.titleWrapper} >
-            <BoldText>{title}</BoldText>
+            <BoldText  >{title}</BoldText>
             </View>
 			<View style={[styles.card, { backgroundColor: colors.card }]}>
                 <FoodCheckBox option={1} description={description} onChangeCheck={(option: number) => console.log(option)} />

@@ -17,12 +17,12 @@ const FoodScreen = ({ navigation }: any) => {
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
-                <BoldText style={styles.title}>{title}</BoldText>
+                {/* <BoldText style={styles.title}>{title}</BoldText> */}
                 {/* <Separator /> */}
 
                 <View style={styles.aboutWrapper}>
                     {/* <BoldText style={styles.header} center>Information</BoldText> */}
-                    <MediumText center>{description}</MediumText>
+                    <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
                 </View>
                 <FoodCard title={'Starters'}/>
                 <FoodCard title={'Mains'} />
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     aboutWrapper: {
-        paddingTop: 10,
+        // paddingTop: 10,
         paddingHorizontal: 10,
     },
     title: {
