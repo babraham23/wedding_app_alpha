@@ -9,7 +9,7 @@ import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 import Home from '../screens/home';
-import FoodScreen from '../screens/food'
+import FoodScreen from '../screens/food/food'
 import InformationScreen from '../screens/information'
 import TableScreen from '../screens/tables'
 
