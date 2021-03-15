@@ -7,11 +7,22 @@ import BigInput from '../inputs/bigInput';
 import BigSecureInput from '../inputs/bigSecureInput';
 import { RegisterModel } from '../../_models/register.model';
 import StandardButton from '../buttons/standardButton';
+import { RegisterUser } from '../../functions/api'
 
 const RegisterForm = () => {
 	const { colors }: any = useTheme();
     const navigation: any = useNavigation()
     const [{ Name, Email, Password, NameError, EmailError, PasswordError }, setState] = React.useState(new RegisterModel())
+    const handleRegister = () => {
+        const data = {
+            username: 'Test1',
+            email: 'test@1.io',
+            password: 'password',
+        }
+        RegisterUser(data)
+        .then(res => console.log('res -->', res))
+        .catch(err => console.log('err -->', err))
+    }
 	return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.inputWrapper} >
@@ -35,7 +46,10 @@ const RegisterForm = () => {
                 secureTextEntry={true}
             />
             </View>
-            <StandardButton title={'Register'} style={{marginVertical: 50}} onPress={() => navigation.navigate('HomeScreen')} />
+            <StandardButton title={'Register'} style={{marginVertical: 50}} 
+                // onPress={() => navigation.navigate('HomeScreen')} 
+                onPress={() => handleRegister()}
+            />
 		</View>
 	);
 };
