@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 		paddingTop: 150,
 	},
 	titleWrapper: {
-		paddingLeft: 30,
+		paddingHorizontal: 20,
 	},
     button:{ 
         height: 100, 

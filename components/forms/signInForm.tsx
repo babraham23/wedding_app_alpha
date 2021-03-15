@@ -8,7 +8,7 @@ import BigSecureInput from '../inputs/bigSecureInput';
 import { RegisterModel } from '../../_models/register.model';
 import StandardButton from '../buttons/standardButton';
 
-const RegisterForm = () => {
+const SignInForm = () => {
 	const { colors }: any = useTheme();
     const navigation: any = useNavigation()
     const [{ Name, Email, Password, NameError, EmailError, PasswordError }, setState] = React.useState(new RegisterModel())
@@ -16,16 +16,10 @@ const RegisterForm = () => {
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.inputWrapper} >
             <BigInput 
-                title={'Whats your name?'} 
+                title={`What's your name or email?`} 
                 autoCorrect={false}
 				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, Name: item }))}
 				error={NameError}
-            />
-            <BigInput 
-                title={'Whats your email?'} 
-				keyboardType={'email-address'}
-				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, Email: item }))}
-				error={EmailError}
             />
             <BigSecureInput 
                 title={'Whats your password?'} 
@@ -35,7 +29,7 @@ const RegisterForm = () => {
                 secureTextEntry={true}
             />
             </View>
-            <StandardButton title={'Register'} style={{marginVertical: 50}} onPress={() => navigation.navigate('HomeScreen')} />
+            <StandardButton title={'Sign In'} style={{ marginVertical: 50 }} onPress={() => navigation.navigate('HomeScreen')} />
 		</View>
 	);
 };
@@ -45,8 +39,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
     inputWrapper: {
-        paddingTop: 40
+        paddingTop: 80
     }
 });
 
-export default RegisterForm;
+export default SignInForm;

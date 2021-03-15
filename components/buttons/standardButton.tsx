@@ -10,7 +10,7 @@ const StandardButton = ({ onPress, title, clear, style }: any) => {
 			{!clear ? (
 				<TouchableOpacity
 					activeOpacity={0.8}
-					style={[style, styles.wrapper, { backgroundColor: colors.text }]}
+					style={[style, styles.wrapper, { backgroundColor: colors.primary }]}
 					onPress={onPress}
 				>
 					{/* <LinearGradient colors={[colors.blue, colors.blue_grad]} style={styles.wrapper}> */}
