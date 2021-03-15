@@ -20,7 +20,7 @@ export const MediumText = ({ style, children, color, fontSize, center }: any) =>
     const { colors }: any = useTheme()
     const styles = StyleSheet.create({
         MediumText: { 
-            fontFamily: 'Medium', 
+            fontFamily: 'Regular', 
             color: color ? color : colors.text,
             fontSize: fontSize ? fontSize : 16,
             textAlign: center ? 'center' : 'left'

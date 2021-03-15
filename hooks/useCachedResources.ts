@@ -18,7 +18,7 @@ export default function useCachedResources() {
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
           'Medium': require('../assets/fonts//SF-UI.ttf'),
         //   'Bold': require('../assets/fonts/SF-UI-Bold.ttf'),
-          'Light': require('../assets/fonts/SF-UI-Light.ttf'),
+          'Light': require('../assets/fonts/PalatinoLight.otf'),
           'Regular': require('../assets/fonts/palatino.otf'),
           'Bold': require('../assets/fonts/palatinoBold.otf'),
         });

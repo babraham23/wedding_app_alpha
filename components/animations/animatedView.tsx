@@ -3,7 +3,7 @@ import { View, Dimensions, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { useTheme } from '@react-navigation/native';
 
-const AnimtedView = ({ children }: any) => {
+const AnimatedView = ({ children }: any) => {
 	const { colors }: any = useTheme();
 	return (
 		<View style={[styles.container, { backgroundColor: colors.primary }]}>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default AnimtedView;
+export default AnimatedView;

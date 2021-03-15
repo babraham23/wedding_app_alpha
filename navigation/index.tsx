@@ -8,7 +8,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
-import Home from '../screens/home';
+import SplashScreen from '../screens/auth/splash';
+import AuthFormScreen from '../screens/auth/authForm';
+import HomeScreen from '../screens/home';
 import FoodScreen from '../screens/food/food'
 import InformationScreen from '../screens/information'
 import TableScreen from '../screens/tables'
@@ -48,7 +50,9 @@ const RootStack = createStackNavigator();
 
 const ScreenStack = ({}) => (
 	<RootStack.Navigator headerMode="none">
-		<RootStack.Screen name="Home" component={Home} />
+        <RootStack.Screen name="SplashScreen" component={SplashScreen} />
+        <RootStack.Screen name="AuthFormScreen" component={AuthFormScreen} />
+		<RootStack.Screen name="HomeScreen" component={HomeScreen} />
         <RootStack.Screen name="InformationScreen" component={InformationScreen} />
         <RootStack.Screen name="FoodScreen" component={FoodScreen} />
         <RootStack.Screen name="TableScreen" component={TableScreen} />
