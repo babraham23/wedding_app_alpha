@@ -4,13 +4,23 @@ import { useTheme } from '@react-navigation/native';
 import { MediumText, LightText, BoldText, Separator } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import TimeItem from '../../components/schedule/timeItem';
+import StandardButton from '../../components/buttons/standardButton';
+import * as SecureStore from 'expo-secure-store';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_USER } from '../../state/reducers/userReducer';
 
 
 const InformationScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
+    const dispatch = useDispatch()
     const title = 'About the Day';
     // const title2 = '  the Day';
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
+    const signOut = async () => {
+        dispatch({ type: SET_USER, payload: {} })
+        await SecureStore.setItemAsync('token', '')
+        navigation.navigate('SplashScreen')
+    }
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
@@ -32,6 +42,7 @@ const InformationScreen = ({ navigation }: any) => {
                     <TimeItem />
                 </View>
 
+                <StandardButton title={'Sign Out'} onPress={() => signOut()} />
 			</View>
 		</ScrollContextProvider>
 	);

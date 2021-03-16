@@ -8,20 +8,32 @@ import BigSecureInput from '../inputs/bigSecureInput';
 import { RegisterModel } from '../../_models/register.model';
 import StandardButton from '../buttons/standardButton';
 import { RegisterUser } from '../../functions/api'
+import * as SecureStore from 'expo-secure-store';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_USER } from '../../state/reducers/userReducer';
 
 const RegisterForm = () => {
 	const { colors }: any = useTheme();
+    const dispatch = useDispatch();
     const navigation: any = useNavigation()
-    const [{ Name, Email, Password, NameError, EmailError, PasswordError }, setState] = React.useState(new RegisterModel())
-    const handleRegister = () => {
+    const [{ username, email, password, usernameError, emailError, passwordError }, setState] = React.useState(new RegisterModel())
+    const handleRegister = async () => {
         const data = {
-            username: 'Test1',
-            email: 'test@1.io',
-            password: 'password',
+            username,
+            email,
+            password,
         }
         RegisterUser(data)
-        .then(res => console.log('res -->', res))
-        .catch(err => console.log('err -->', err))
+        .then(res => {
+            console.log('res -->', res.data)
+            storeToken(res.data.jwt)
+            dispatch({ type: SET_USER, payload: res.data.user })
+            navigation.navigate('HomeScreen')
+        })
+        .catch(err => alert(err))
+    }
+    const storeToken = async (token: any) => {
+        await SecureStore.setItemAsync('token', token);
     }
 	return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -29,20 +41,20 @@ const RegisterForm = () => {
             <BigInput 
                 title={'Whats your name?'} 
                 autoCorrect={false}
-				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, Name: item }))}
-				error={NameError}
+				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, username: item }))}
+				error={usernameError}
             />
             <BigInput 
                 title={'Whats your email?'} 
 				keyboardType={'email-address'}
-				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, Email: item }))}
-				error={EmailError}
+				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, email: item }))}
+				error={emailError}
             />
             <BigSecureInput 
                 title={'Whats your password?'} 
-				keyboardType={'email-address'}
-				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, Email: item }))}
-				error={EmailError}
+				// keyboardType={'email-address'}
+				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, password: item }))}
+				error={emailError}
                 secureTextEntry={true}
             />
             </View>

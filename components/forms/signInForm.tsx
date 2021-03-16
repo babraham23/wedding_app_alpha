@@ -5,31 +5,55 @@ import { MediumText, LightText, BoldText, Separator } from '../../style/typograp
 import * as Animatable from 'react-native-animatable';
 import BigInput from '../inputs/bigInput';
 import BigSecureInput from '../inputs/bigSecureInput';
-import { RegisterModel } from '../../_models/register.model';
+import { SignInModel } from '../../_models/signIn.model';
 import StandardButton from '../buttons/standardButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_USER } from '../../state/reducers/userReducer';
+import { LogInUser } from '../../functions/api'
+import * as SecureStore from 'expo-secure-store';
+
 
 const SignInForm = () => {
 	const { colors }: any = useTheme();
     const navigation: any = useNavigation()
-    const [{ Name, Email, Password, NameError, EmailError, PasswordError }, setState] = React.useState(new RegisterModel())
-	return (
+    const dispatch = useDispatch()
+    const [{ username, password, usernameError, passwordError }, setState] = React.useState(new SignInModel())
+    const handleSignIn = async () => {
+        const data = {
+            identifier: username,
+            password,
+        }
+        console.log('data -->', data)
+        LogInUser(data)
+        .then(res => {
+            console.log('res -->', res.data)
+            storeToken(res.data.jwt)
+            dispatch({ type: SET_USER, payload: res.data.user })
+            navigation.navigate('HomeScreen')
+        })
+        .catch(err => alert(err))
+    }
+    const storeToken = async (token: any) => {
+        await SecureStore.setItemAsync('token', token);
+    }
+    return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.inputWrapper} >
             <BigInput 
                 title={`What's your name or email?`} 
                 autoCorrect={false}
-				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, Name: item }))}
-				error={NameError}
+				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, username: item }))}
+				error={usernameError}
             />
             <BigSecureInput 
                 title={'Whats your password?'} 
 				keyboardType={'email-address'}
-				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, Email: item }))}
-				error={EmailError}
+				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, password: item }))}
+				error={passwordError}
                 secureTextEntry={true}
             />
             </View>
-            <StandardButton title={'Sign In'} style={{ marginVertical: 50 }} onPress={() => navigation.navigate('HomeScreen')} />
+            <StandardButton title={'Sign In'} style={{ marginVertical: 50 }} onPress={() => handleSignIn()} />
 		</View>
 	);
 };

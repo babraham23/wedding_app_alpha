@@ -3,11 +3,22 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { MediumText, LightText, BoldText, Separator } from '../../style/typography';
 import * as Animatable from 'react-native-animatable';
+import * as SecureStore from 'expo-secure-store';
+
 
 const SplashScreen = ({ navigation }: any) => {
 	const title1 = `Welcome to`;
 	const title2 = `Emma and Emily's Wedding.`;
 	const { colors }: any = useTheme();
+    const checkToken = async () => {
+        const token = await SecureStore.getItemAsync('token');
+        if (token) {
+            navigation.navigate('HomeScreen');
+        }
+    }
+    React.useEffect(() => {
+        checkToken()
+    })
 	return (
 		<>
 			<View style={[styles.container, { backgroundColor: colors.card }]}>
