@@ -28,6 +28,7 @@ const SignInForm = () => {
         .then(res => {
             console.log('res -->', res.data)
             storeToken(res.data.jwt)
+            storeUser(res.data.user.username)
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
@@ -35,6 +36,9 @@ const SignInForm = () => {
     }
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
+    }
+    const storeUser = async (token: any) => {
+        await SecureStore.setItemAsync('user', token);
     }
     return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -46,7 +50,7 @@ const SignInForm = () => {
 				error={usernameError}
             />
             <BigSecureInput 
-                title={'Whats your password?'} 
+                title={`What's your password?`} 
 				keyboardType={'email-address'}
 				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, password: item }))}
 				error={passwordError}
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
     inputWrapper: {
-        paddingTop: 80
+        paddingTop: 40
     }
 });
 

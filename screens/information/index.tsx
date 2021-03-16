@@ -13,9 +13,11 @@ import { SET_USER } from '../../state/reducers/userReducer';
 const InformationScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const dispatch = useDispatch()
-    const title = 'About the Day';
-    // const title2 = '  the Day';
+    const userInfo: any = useSelector((state: any) => state.userReducer)
+    console.log('userInfo -->', userInfo)
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
+    const title = `Welcome ${userInfo.username}.`;
+    
     const signOut = async () => {
         dispatch({ type: SET_USER, payload: {} })
         await SecureStore.setItemAsync('token', '')

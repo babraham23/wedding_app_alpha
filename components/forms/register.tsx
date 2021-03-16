@@ -39,19 +39,19 @@ const RegisterForm = () => {
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.inputWrapper} >
             <BigInput 
-                title={'Whats your name?'} 
+                title={`What's your name?`} 
                 autoCorrect={false}
 				onChangeText={(item: any) => setState((prevState: any) => ({ ...prevState, username: item }))}
 				error={usernameError}
             />
             <BigInput 
-                title={'Whats your email?'} 
+                title={`What's your email?`} 
 				keyboardType={'email-address'}
 				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, email: item }))}
 				error={emailError}
             />
             <BigSecureInput 
-                title={'Whats your password?'} 
+                title={`What's your password?`} 
 				// keyboardType={'email-address'}
 				onChangeText={(item: any) => setState((prevState) => ({ ...prevState, password: item }))}
 				error={emailError}
