@@ -11,7 +11,6 @@ class HTTP_HEADERS {
     }
 }
 
-
 export const HTTP = (DATA: any) => {
     return axios({
         method: DATA.Method,

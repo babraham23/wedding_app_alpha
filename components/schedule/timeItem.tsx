@@ -4,14 +4,14 @@ import FontAwesome from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MediumText, BoldText, Separator } from '../../style/typography';
 import { useTheme } from '@react-navigation/native';
 
-const TimeItem = ({ style }: any) => {
+const TimeItem = ({ style, time, item }: any) => {
 	const { colors } = useTheme();
 	return (
 		<View style={[style]}>
 			<View style={styles.timeWrapper}>
-				<FontAwesome name={'cards-diamond-outline'} color={colors.text} size={23} style={styles.icon} />
-				<MediumText fontSize={23}>1pm: </MediumText>
-				<MediumText fontSize={23}>Guest Arrival </MediumText>
+				<FontAwesome name={'cards-diamond-outline'} color={colors.primary} size={23} style={styles.icon} />
+				<MediumText fontSize={23}>{time}: </MediumText>
+				<MediumText fontSize={23}>{item}</MediumText>
 			</View>
 		</View>
 	);
