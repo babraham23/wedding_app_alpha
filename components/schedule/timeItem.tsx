@@ -4,6 +4,7 @@ import FontAwesome from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MediumText, BoldText, Separator } from '../../style/typography';
 import { useTheme } from '@react-navigation/native';
 
+
 const TimeItem = ({ style, time, item }: any) => {
 	const { colors } = useTheme();
 	return (

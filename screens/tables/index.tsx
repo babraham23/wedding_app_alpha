@@ -6,6 +6,7 @@ import { ScrollContextProvider } from '../../components/scrollContext/scrollCont
 import TableItem from '../../components/table/tableItem';
 import StandardInput from '../../components/inputs/standardInput';
 import SeperatorAccordion from '../../components/accordions/seperatorAccordion'
+import { Get_Seating } from '../../functions/api'
 
 /**
  * @param
@@ -13,31 +14,49 @@ import SeperatorAccordion from '../../components/accordions/seperatorAccordion'
  * Description
  */
 
- const guests = [
-     { Id: 1, Guest: 'Emily Robinson' },
-     { Id: 2, Guest: 'Emma Watson' },
-     { Id: 3, Guest: 'Brett Abraham' },
- ]
+//  const guests = [
+//      { Id: 1, Guest: 'Emily Robinson' },
+//      { Id: 2, Guest: 'Emma Watson' },
+//      { Id: 3, Guest: 'Brett Abraham' },
+//  ]
 
 const TableScreen = ({ navigation }: any) => {
     const { colors } = useTheme();
-    const [ filteredData, setFilteredData ] = React.useState<any>(guests);
+    const [ filteredData, setFilteredData ] = React.useState<any>([]);
+    const [ tables, setTables ] = React.useState([]);
     const title = 'Seating Arrangement';
+
+    const getSeating = () => {
+        Get_Seating()
+        .then(res => {
+            setTables(res.data)
+            // console.log('food -->', res.data)
+        })
+        .catch(err => alert(err))
+    }
+
+    React.useEffect(() => {
+        getSeating()
+    }, [])
+
     const searchData = (text: any) => {
-		const FILTERED_DATA = guests.filter((item: any) => {
-			const itemData = item.Guest.toLowerCase();
-			return itemData.indexOf(text.toLowerCase()) > -1;
-		});
-        setFilteredData(FILTERED_DATA)
+		// const FILTERED_DATA = tables.filter((item: any) => {
+		// 	const itemData = item.guests[0].toLowerCase();
+		// 	return itemData.indexOf(text.toLowerCase()) > -1;
+		// });
+        // console.log(FILTERED_DATA)
+        // setFilteredData(FILTERED_DATA)
 	};
+    console.log('tables ->', tables)
 	return (
-		<ScrollContextProvider headerTitle={title}>
+		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
                 <BoldText style={styles.title} >{title}</BoldText>
                 <SeperatorAccordion onChangeText={searchData} />
-                {filteredData.map((item: any) => {
-                    return <TableItem tableNo={item.Id} key={item.Id} guest={item.Guest} />
+                {tables.map((item: any) => {
+                    return <TableItem tableNo={item.tableNo} guests={item.guests} key={item.id}  />
                 })}
+                <View style={{height: 60}} />
 			</View>
 		</ScrollContextProvider>
 	);

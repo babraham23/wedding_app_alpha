@@ -8,7 +8,7 @@ import StandardButton from '../../components/buttons/standardButton';
 import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../../state/reducers/userReducer';
-import { Get_Information, Get_Shedule } from '../../functions/api'
+import { Get_Information, Get_Shedule, Get_Foods, Get_Seating } from '../../functions/api'
 
 
 const InformationScreen = ({ navigation }: any) => {
@@ -18,8 +18,8 @@ const InformationScreen = ({ navigation }: any) => {
     // console.log('userInfo -->', userInfo)
     // const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
     const title = `Welcome ${userInfo.username}.`;
-    const [ info, setInfo ] = React.useState([])
-    const [ shedule, setShedule ] = React.useState([])
+    const [ info, setInfo ] = React.useState([]);
+    const [ shedule, setShedule ] = React.useState([]);
     
     const getInformation = () => {
         Get_Information()
@@ -33,6 +33,17 @@ const InformationScreen = ({ navigation }: any) => {
         })
         .catch(err => alert(err))
     }
+
+    const getFood = () => {
+        Get_Seating()
+        .then(res => {
+            // setInfo(res.data)
+            console.log('food -->', res.data)
+        })
+        .catch(err => alert(err))
+    }
+
+    
 
     const signOut = async () => {
         dispatch({ type: SET_USER, payload: {} })
@@ -64,7 +75,7 @@ const InformationScreen = ({ navigation }: any) => {
                         return <TimeItem key={item.id} time={item.time} item={item.item} />
                     })}
                 </View>
-                <StandardButton title={'Get info'} onPress={() => getInformation()} />
+                <StandardButton title={'getFood'} onPress={() => getFood()} />
                 <StandardButton title={'Sign Out'} onPress={() => signOut()} />
 			</View>
 		</ScrollContextProvider>

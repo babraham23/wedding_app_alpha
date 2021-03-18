@@ -30,8 +30,8 @@ const FoodCheckBox = ({ style, option, onChangeCheck, description}: any) => {
 				</TouchableOpacity>
 
 				<View style={styles.contentWrapper}>
-					<BoldText fontSize={23}>Option {option}</BoldText>
-                    <MediumText style={styles.description}>{description}</MediumText>
+					{/* <BoldText fontSize={23}>Option {option}</BoldText> */}
+                    <Text style={[styles.description, { color: colors.text }]}>{description}</Text>
 				</View>
 
 			</View>
@@ -41,7 +41,7 @@ const FoodCheckBox = ({ style, option, onChangeCheck, description}: any) => {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 20,
+		marginVertical: 20,
 	},
 	wrapper: {
 		width: '100%',
@@ -53,11 +53,15 @@ const styles = StyleSheet.create({
 		width: '80%',
     },
     description: {
-        marginTop: 5
+        marginTop: 5,
+        fontFamily: 'Regular', 
+        fontSize: 16,
+        lineHeight: 20,
+        // textAlign: 'center'
     },
 	text: {
 		fontFamily: 'HELVETICA',
-		fontSize: 18,
+		fontSize: 20,
 		paddingLeft: 10,
     },
     bold: {

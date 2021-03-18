@@ -5,15 +5,27 @@ import { BoldText, MediumText } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import FoodCard from '../../components/cards/foodCard'
 import StandardButton from  '../../components/buttons/standardButton';
+import { Get_Information, Get_Shedule, Get_Foods } from '../../functions/api'
+
 
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
-    const title = 'Food';
-    const description = "Please select your food for the day"
-    const [ search, setSearch ] = React.useState('')
+    const title = 'Food Selection';
+    const description = "Please select an item for each meal"
+    const [ foodData, setFoodData ] = React.useState([])
     const handleNav = (route: string) => {
         navigation.navigate(route)
     }
+    const getFood = () => {
+        Get_Foods()
+        .then(res => {
+            setFoodData(res.data)
+        })
+        .catch(err => alert(err))
+    }
+    React.useEffect(() => {
+        getFood()
+    }, [])
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
@@ -24,9 +36,10 @@ const FoodScreen = ({ navigation }: any) => {
                     {/* <BoldText style={styles.header} center>Information</BoldText> */}
                     <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
                 </View>
-                <FoodCard title={'Starters'}/>
-                <FoodCard title={'Mains'} />
-                <FoodCard title={'Dessert'} />
+                {foodData.map((item: any) => {
+                    return <FoodCard key={item.id} title={item.title} food_courses={item.food_courses} />
+                })}
+                
                 <StandardButton style={styles.button} title={'Submit'} />
 
 			</View>

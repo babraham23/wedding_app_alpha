@@ -4,4 +4,6 @@ export const REGISTER = `${BASE_API_URL}/auth/local/register`;
 export const LOG_IN = `${BASE_API_URL}/auth/local`;
 export const INFO = `${BASE_API_URL}/infos`;
 export const SCHEDULE = `${BASE_API_URL}/schedules`;
+export const FOODS = `${BASE_API_URL}/foods`;
+export const SEATING = `${BASE_API_URL}/tables`;
 export const ACCOMODATION = `${BASE_API_URL}/accommodations`;

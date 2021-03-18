@@ -4,7 +4,8 @@ import { useTheme } from '@react-navigation/native';
 import { LightText, BoldText } from '../../style/typography';
 import FoodCheckBox from '../checkbox/foodCheckBox';
 
-const FoodCard = ({ style, title }: any) => {
+const FoodCard = ({ style, title, food_courses }: any) => {
+    console.log('food_courses -->', food_courses)
     const { colors }: any = useTheme();
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad consectetur adipiscing elit';
 	return (
@@ -13,9 +14,10 @@ const FoodCard = ({ style, title }: any) => {
             <BoldText  >{title}</BoldText>
             </View>
 			<View style={[styles.card, { backgroundColor: colors.card }]}>
-                <FoodCheckBox option={1} description={description} onChangeCheck={(option: number) => console.log(option)} />
-                <FoodCheckBox option={2} description={description} />
-                <LightText style={styles.description}>{description}</LightText>
+                {food_courses.map((item: any) => {
+                    return <FoodCheckBox key={item.id} option={1} description={item.description} onChangeCheck={(option: number) => console.log(item)} />
+                })}
+                {/* <LightText style={styles.description}>{description}</LightText> */}
 			</View>
 		</View>
 	);
@@ -35,11 +37,11 @@ const styles = StyleSheet.create({
 			width: 0,
 			height: 4,
 		},
-		shadowOpacity: 0.32,
+		shadowOpacity: 0.1,
 		shadowRadius: 5.46,
         elevation: 9,
-        marginTop: 20,
-        padding: 20
+        marginTop: 10,
+        padding: 10,
     },
     description: {
         paddingTop: 20

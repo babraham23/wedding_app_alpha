@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { MediumText } from '../../style/typography';
+import { MediumText, BoldText } from '../../style/typography';
 import FontAwesome from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const PersonItem = ({ style, guest }: any) => {
@@ -9,7 +9,7 @@ const PersonItem = ({ style, guest }: any) => {
 	return (
 		<View style={styles.wrapper}>
 			<FontAwesome name={'cards-diamond-outline'} color={colors.text} size={15} style={styles.icon} />
-			<MediumText>{guest}</MediumText>
+			<Text style={[styles.title, { color: colors.text }]} >{guest}</Text>
 		</View>
 	);
 };
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 20,
-		fontFamily: 'regular',
+		fontFamily: 'Bold',
+        lineHeight: 25
 	},
 	wrapper: {
 		paddingTop: 5,

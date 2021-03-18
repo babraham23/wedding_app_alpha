@@ -4,14 +4,16 @@ import { useTheme } from '@react-navigation/native';
 import { BoldText } from '../../style/typography';
 import PersonItem from './personItem';
 
-const TableItem = ({ style, tableNo, guest }: any) => {
+const TableItem = ({ tableNo, guests, style }: any) => {
 	const { colors } = useTheme();
 	return (
 		<View style={[style, styles.cardWrapper]}>
-			<BoldText style={styles.title} >Table {tableNo}:</BoldText>
+			<BoldText style={styles.title} >Table {tableNo}</BoldText>
 			<View style={[styles.container, { backgroundColor: colors.card }]}>
 				<View style={styles.wrapper}>
-					<PersonItem guest={guest} />
+                    {guests.map((item: any) => {
+                        return <PersonItem key={item.id} guest={item.fullName} />
+                    })}
 				</View>
 			</View>
 		</View>
