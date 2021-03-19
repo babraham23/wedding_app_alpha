@@ -19,9 +19,9 @@ import TableScreen from '../screens/tables'
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-	// const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
+	const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
 	// const theme = CustomDefaultTheme
-	const theme = CustomDarkTheme
+	// const theme = CustomDarkTheme
 	return (
 		<NavigationContainer linking={LinkingConfiguration} theme={theme}>
 			{/* <RootNavigator /> */}

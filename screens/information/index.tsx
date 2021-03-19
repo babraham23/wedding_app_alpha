@@ -34,14 +34,14 @@ const InformationScreen = ({ navigation }: any) => {
         .catch(err => alert(err))
     }
 
-    const getFood = () => {
-        Get_Seating()
-        .then(res => {
-            // setInfo(res.data)
-            console.log('food -->', res.data)
-        })
-        .catch(err => alert(err))
-    }
+    // const getFood = () => {
+    //     Get_Seating()
+    //     .then(res => {
+    //         // setInfo(res.data)
+    //         console.log('food -->', res.data)
+    //     })
+    //     .catch(err => alert(err))
+    // }
 
     
 
@@ -75,7 +75,7 @@ const InformationScreen = ({ navigation }: any) => {
                         return <TimeItem key={item.id} time={item.time} item={item.item} />
                     })}
                 </View>
-                <StandardButton title={'getFood'} onPress={() => getFood()} />
+                {/* <StandardButton title={'getFood'} onPress={() => getFood()} /> */}
                 <StandardButton title={'Sign Out'} onPress={() => signOut()} />
 			</View>
 		</ScrollContextProvider>

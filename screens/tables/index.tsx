@@ -47,7 +47,7 @@ const TableScreen = ({ navigation }: any) => {
         // console.log(FILTERED_DATA)
         // setFilteredData(FILTERED_DATA)
 	};
-    console.log('tables ->', tables)
+    // console.log('tables ->', tables)
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>

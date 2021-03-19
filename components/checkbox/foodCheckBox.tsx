@@ -5,7 +5,11 @@ import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 import { MediumText, BoldText, Separator } from '../../style/typography';
 
-const FoodCheckBox = ({ style, option, onChangeCheck, description}: any) => {
+
+// option1 box
+//option2 box
+
+const FoodCheckBox = ({ style, option, onChangeCheck, description }: any) => {
 	const { colors } = useTheme();
 	const [check, toggleCheck] = React.useState(false);
 	const handleCheck = () => {
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     },
     description: {
         marginTop: 5,
-        fontFamily: 'Regular', 
+        fontFamily: 'Bold', 
         fontSize: 16,
         lineHeight: 20,
         // textAlign: 'center'

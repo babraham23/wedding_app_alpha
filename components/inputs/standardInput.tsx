@@ -52,20 +52,20 @@ const Input = ({
 				) : null}
 			</View>
 
-			{errors ? (
+			{/* {errors ? (
 				<Animatable.View animation="fadeInLeft" duration={500}>
 					<Text style={styles.errorMsg}>{errors}</Text>
 				</Animatable.View>
 			) : (
 				<View style={styles.paddingView} />
-			)}
+			)} */}
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%'
+        width: '100%',
     },
 	title: {
 		fontSize: 18,
@@ -94,9 +94,9 @@ const styles = StyleSheet.create({
 	},
 	textInput: {
 		flex: 1,
-		marginTop: Platform.OS === 'ios' ? 0 : -12,
+		// marginTop: Platform.OS === 'ios' ? 0 : -12,
         paddingLeft: 10,
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: 'Medium', 
 	},
 	errorMsg: {
