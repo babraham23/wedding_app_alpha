@@ -45,11 +45,11 @@ const InformationScreen = ({ navigation }: any) => {
 
     
 
-    const signOut = async () => {
-        dispatch({ type: SET_USER, payload: {} })
-        await SecureStore.setItemAsync('token', '')
-        navigation.navigate('SplashScreen')
-    }
+    // const signOut = async () => {
+    //     dispatch({ type: SET_USER, payload: {} })
+    //     await SecureStore.setItemAsync('token', '')
+    //     navigation.navigate('SplashScreen')
+    // }
 
     React.useEffect(() => {
         getInformation()
@@ -76,7 +76,7 @@ const InformationScreen = ({ navigation }: any) => {
                     })}
                 </View>
                 {/* <StandardButton title={'getFood'} onPress={() => getFood()} /> */}
-                <StandardButton title={'Sign Out'} onPress={() => signOut()} />
+                {/* <StandardButton title={'Sign Out'} onPress={() => signOut()} /> */}
 			</View>
 		</ScrollContextProvider>
 	);

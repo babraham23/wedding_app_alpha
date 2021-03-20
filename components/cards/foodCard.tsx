@@ -7,32 +7,48 @@ import FoodCheckBoxes from '../checkbox/foodCheckBoxes';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 
-const FoodCard = ({ style, title, food_courses, foodType }: any) => {
+const FoodCard = ({ style, title, handleOption }: any) => {
 	// console.log('food_courses -->', food_courses)
 	const { colors }: any = useTheme();
-    const [check, toggleCheck] = React.useState(false);
-	const handleCheck = () => {
-		toggleCheck(!check)
-    }
+	const [check, toggleCheck] = React.useState(false);
+    const [ option1, setOption1 ] = React.useState(true);
+    const [ option2, setOption2 ] = React.useState(false);
+    const [ option3, setOption3 ] = React.useState(false);
+	const handleCheck = (option: any) => {
+		if (option == 1) {
+            setOption1(true)
+            setOption2(false)
+            setOption3(false)
+            handleOption(1)
+        }
+        if (option == 2) {
+            setOption1(false)
+            setOption2(true)
+            setOption3(false)
+            handleOption(2)
+        }
+        if (option == 3) {
+            setOption1(false)
+            setOption2(false)
+            setOption3(true)
+            handleOption(3)
+        }
+	};
 	return (
 		<View style={style}>
 			<View style={styles.titleWrapper}>
-				<BoldText color={colors.primary} >{title}</BoldText>
+				<BoldText color={colors.primary}>{title}</BoldText>
 			</View>
 			<View style={[styles.card, { backgroundColor: colors.card }]}>
-
-
-			{/* <View style={[style, styles.container]}>
-				{food_courses.map((item: any) => {
-                    return (
-					<View key={item.id} style={[styles.wrapper]}>
+				<View style={[style, styles.container]}>
+					<View style={[styles.wrapper]}>
 						<TouchableOpacity
-							onPress={() => handleCheck()}
+							onPress={() => handleCheck(1)}
 							activeOpacity={0.5}
 							style={[styles.checkboxWrapper]}
 						>
 							<View style={[styles.check, { backgroundColor: colors.background }]}>
-								{check ? (
+								{option1 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
 										<Feather name={'check'} color={colors.text} size={40} />
 									</Animatable.View>
@@ -41,17 +57,51 @@ const FoodCard = ({ style, title, food_courses, foodType }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option {item.option}</BoldText>
-							<Text style={[styles.description, { color: colors.text }]}>{item.description}</Text>
+							<BoldText fontSize={20}>Option 1 Title</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>Option 1 description</Text>
 						</View>
-					</View>)
-				})}
-			</View> */}
+					</View>
+                    <View style={[styles.wrapper]}>
+						<TouchableOpacity
+							onPress={() => handleCheck(2)}
+							activeOpacity={0.5}
+							style={[styles.checkboxWrapper]}
+						>
+							<View style={[styles.check, { backgroundColor: colors.background }]}>
+								{option2 ? (
+									<Animatable.View animation={'bounceIn'} style={[style]}>
+										<Feather name={'check'} color={colors.text} size={40} />
+									</Animatable.View>
+								) : null}
+							</View>
+						</TouchableOpacity>
 
+						<View style={styles.contentWrapper}>
+							<BoldText fontSize={20}>Option 2 Title</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>Option 2 description</Text>
+						</View>
+					</View>
+                    <View style={[styles.wrapper]}>
+						<TouchableOpacity
+							onPress={() => handleCheck(3)}
+							activeOpacity={0.5}
+							style={[styles.checkboxWrapper]}
+						>
+							<View style={[styles.check, { backgroundColor: colors.background }]}>
+								{option3 ? (
+									<Animatable.View animation={'bounceIn'} style={[style]}>
+										<Feather name={'check'} color={colors.text} size={40} />
+									</Animatable.View>
+								) : null}
+							</View>
+						</TouchableOpacity>
 
-                <FoodCheckBoxes food_courses={food_courses} />
-
-	
+						<View style={styles.contentWrapper}>
+							<BoldText fontSize={20}>Option Vegan</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>Option Vegan description</Text>
+						</View>
+					</View>
+				</View>
 			</View>
 		</View>
 	);
@@ -77,15 +127,15 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		padding: 10,
 	},
-    container: {
-		marginVertical: 20,
+	container: {
+		// marginVertical: 10,
 	},
 	wrapper: {
 		width: '100%',
 		// height: 66,
 		flexDirection: 'row',
 		// borderWidth: 1.5,
-        marginBottom: 20
+		marginVertical: 20,
 	},
 	contentWrapper: {
 		width: '80%',
@@ -125,18 +175,16 @@ const styles = StyleSheet.create({
 
 export default FoodCard;
 
-
-			// {/* {food_courses.map((item: any) => {
-			// 		return (
-			// 			<FoodCheckBoxes
-			// 				key={item.id}
-			// 				option={1}
-			// 				description={item.description}
-			// 				onChangeCheck={(option: number) => console.log(item)}
-			// 			/>
-			// 		);
-			// 	})} */
-
+// {/* {food_courses.map((item: any) => {
+// 		return (
+// 			<FoodCheckBoxes
+// 				key={item.id}
+// 				option={1}
+// 				description={item.description}
+// 				onChangeCheck={(option: number) => console.log(item)}
+// 			/>
+// 		);
+// 	})} */
 
 // {food_courses.map((item: any) => {
 //     console.log('item -->', item)

@@ -5,8 +5,26 @@ import { BoldText, MediumText } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import FoodCard from '../../components/cards/foodCard'
 import StandardButton from  '../../components/buttons/standardButton';
-import { Get_Information, Get_Starters, Get_Foods } from '../../functions/api'
+import { Get_Information, Get_Starters, Get_Foods, Get_Option_Ones } from '../../functions/api'
 
+
+const dummyData = [{
+    Starte: [
+        { description: 'Option 1' },
+        { description: 'Option 2' },
+        { description: 'Vegan Option' },
+    ], 
+    Main: [
+        { description: 'Option 1' },
+        { description: 'Option 2' },
+        { description: 'Vegan Option' },
+    ], 
+    Dessert: [
+        { description: 'Option 1' },
+        { description: 'Option 2' },
+        { description: 'Vegan Option' },
+    ], 
+}]
 
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
@@ -17,12 +35,18 @@ const FoodScreen = ({ navigation }: any) => {
         navigation.navigate(route)
     }
     const getFood = () => {
-        Get_Foods()
+        Get_Starters()
         .then(res => {
-            setFoodData(res.data)
+            // console.log('res -->', res.data)
+            // setFoodData(res.data)
         })
         .catch(err => alert(err))
     }
+
+    const handleOption = (type:any, option: any) => {
+            console.log(`${type} -->`, option)
+    }
+
     React.useEffect(() => {
         getFood()
     }, [])
@@ -37,10 +61,19 @@ const FoodScreen = ({ navigation }: any) => {
                     {/* <BoldText style={styles.header} center>Information</BoldText> */}
                     <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
                 </View>
-                {foodData.map((item: any) => {
+
+                <FoodCard title={'Starter'} handleOption={(option: any) => handleOption('Starter', option)} />
+                <FoodCard title={'Main'} handleOption={(option: any) => handleOption('Main', option)} />
+                <FoodCard title={'Dessert'} handleOption={(option: any) => handleOption('Dessert', option)} />
+
+                {/* <FoodCard title={'Main'} />
+                <FoodCard title={'Dessert'} /> */}
+
+
+                {/* {foodData.map((item: any) => {
                     return <FoodCard foodType={item.title} key={item.id} title={item.title} food_courses={item.food_courses} />
                 })}
-                
+                 */}
                 <StandardButton style={styles.button} title={'Submit'} />
 
 			</View>

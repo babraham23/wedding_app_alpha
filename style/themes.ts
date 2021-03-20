@@ -35,7 +35,7 @@ export const CustomDarkTheme = {
         border: '#AFAFB2',
         // card: '#292929',
         // text: '#f8d0a8',
-        primary: '#014421',
+        primary: '#026b34',
         seperator: '#54545899',
 
 
