@@ -50,7 +50,7 @@ export const Header = (props: any) => {
         {/* {props.headerLeft !== undefined && props.headerLeft} */}
         {/* <Image source={require('../../assets/images/menu.png')} style={styles.menu} /> */}
         {/* <Ionicons size={34} style={{ marginLeft: 20 }} name={'ios-menu-outline'} color={colors.text}  /> */}
-        <Ionicons size={34} style={{ marginLeft: 20 }} name={'arrow-back-sharp'} color={colors.text}  />
+        <Ionicons size={34} style={{ marginLeft: 20 }} name={'arrow-back-sharp'} color={colors.primary}  />
       </TouchableOpacity>
 
       <Animated.View

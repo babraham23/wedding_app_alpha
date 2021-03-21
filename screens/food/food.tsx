@@ -1,39 +1,51 @@
 import * as React from 'react';
-import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Alert } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { BoldText, MediumText } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import FoodCard from '../../components/cards/foodCard'
 import StandardButton from  '../../components/buttons/standardButton';
 import { Get_Information, Get_Starters, Get_Foods, Get_Option_Ones } from '../../functions/api'
+import { ValidateFoodChoices } from '../../functions/validators'
 
 
-const dummyData = [{
-    Starte: [
-        { description: 'Option 1' },
-        { description: 'Option 2' },
-        { description: 'Vegan Option' },
-    ], 
-    Main: [
-        { description: 'Option 1' },
-        { description: 'Option 2' },
-        { description: 'Vegan Option' },
-    ], 
-    Dessert: [
-        { description: 'Option 1' },
-        { description: 'Option 2' },
-        { description: 'Vegan Option' },
-    ], 
-}]
+const foodData = [
+    {
+        title: 'Starter',
+        options: [
+            { description: 'Optionsvsv 1 Starter' },
+            { description: 'Option 2 Starter' },
+            { description: 'Vegan Starter description' },
+        ]
+    },
+    {
+        title: 'Main',
+        options: [
+            { description: 'Main 1 Main' },
+            { description: 'Main 2 description' },
+            { description: 'Vegan Option Main' },
+        ]
+    },
+    {
+        title: 'Dessert',
+        options: [
+            { description: 'Dessert 1 description' },
+            { description: 'Dessert 2 description' },
+            { description: 'Vegan Dessert description' },
+        ]
+    }
+]
+
 
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const title = 'Food Selection';
     const description = "Please select an item for each meal"
-    const [ foodData, setFoodData ] = React.useState([])
-    const handleNav = (route: string) => {
-        navigation.navigate(route)
-    }
+    // const [ foodData, setFoodData ] = React.useState([])
+    const [ starter, setStarter ] = React.useState("");
+    const [ main, setMain ] = React.useState("");
+    const [ dessert, setDessert ] = React.useState("");
+
     const getFood = () => {
         Get_Starters()
         .then(res => {
@@ -44,12 +56,52 @@ const FoodScreen = ({ navigation }: any) => {
     }
 
     const handleOption = (type:any, option: any) => {
-            console.log(`${type} -->`, option)
+        console.log('type -->', type)
+            if (type == "Starter") setStarter(option)
+            if (type == 'Main') setMain(option)
+            if (type == 'Dessert') setDessert(option)
+    }
+
+    const handleValidation = () => {
+        // navigation.navigate()
+        const choices = {
+            starter,
+            main,
+            dessert
+        }
+        const ValidateStep = ValidateFoodChoices(choices);
+        console.log('v -->', ValidateStep)
+		if (ValidateStep.valid) {
+			showAlert()
+		} else {
+            alert('Please select an option for each meal')
+		}
+        console.log('choices -->', choices)
     }
 
     React.useEffect(() => {
         getFood()
     }, [])
+
+    const showAlert = () => {
+        Alert.alert(
+            'Are you happy with your selection?',
+            'Once your selection has been submitted it cannot be changed.',
+            [
+                {
+                    text: 'Confirm Selection',
+                    onPress: (() => {}),
+                    // style: 'cancel',
+                },
+                {
+                    text: 'Cancel',
+                    onPress: () => {},
+                    style: 'cancel',
+                },
+            ],
+        );
+    }
+
     // console.log('foodData -->', foodData)
 	return (
 		<ScrollContextProvider title={title}>
@@ -62,9 +114,14 @@ const FoodScreen = ({ navigation }: any) => {
                     <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
                 </View>
 
-                <FoodCard title={'Starter'} handleOption={(option: any) => handleOption('Starter', option)} />
+                {foodData.map((item: any, i: any) => {
+                    return <FoodCard title={item.title} options={item.options} handleOption={(option: any) => handleOption(item.title, option)} />
+                })}
+                
+
+                {/* <FoodCard title={'Starter'} handleOption={(option: any) => handleOption('Starter', option)} />
                 <FoodCard title={'Main'} handleOption={(option: any) => handleOption('Main', option)} />
-                <FoodCard title={'Dessert'} handleOption={(option: any) => handleOption('Dessert', option)} />
+                <FoodCard title={'Dessert'} handleOption={(option: any) => handleOption('Dessert', option)} /> */}
 
                 {/* <FoodCard title={'Main'} />
                 <FoodCard title={'Dessert'} /> */}
@@ -74,7 +131,7 @@ const FoodScreen = ({ navigation }: any) => {
                     return <FoodCard foodType={item.title} key={item.id} title={item.title} food_courses={item.food_courses} />
                 })}
                  */}
-                <StandardButton style={styles.button} title={'Submit'} />
+                <StandardButton onPress={() => handleValidation()} style={styles.button} title={'Submit'} />
 
 			</View>
 		</ScrollContextProvider>

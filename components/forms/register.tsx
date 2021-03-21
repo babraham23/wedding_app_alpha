@@ -27,6 +27,7 @@ const RegisterForm = () => {
         .then(res => {
             console.log('res -->', res.data)
             storeToken(res.data.jwt)
+            saveUserDetailsLocally()
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
@@ -35,6 +36,10 @@ const RegisterForm = () => {
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
     }
+    const saveUserDetailsLocally = async () => {
+		const userDetails = { username, email, password };
+		await SecureStore.setItemAsync('userDetails', JSON.stringify(userDetails));
+	};
 	return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
             <View style={styles.inputWrapper} >

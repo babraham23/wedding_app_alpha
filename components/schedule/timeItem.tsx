@@ -10,9 +10,9 @@ const TimeItem = ({ style, time, item }: any) => {
 	return (
 		<View style={[style]}>
 			<View style={styles.timeWrapper}>
-				<FontAwesome name={'cards-diamond-outline'} color={colors.primary} size={23} style={styles.icon} />
-				<MediumText fontSize={23}>{time}: </MediumText>
-				<MediumText fontSize={23}>{item}</MediumText>
+				<FontAwesome name={'cards-diamond-outline'} color={colors.primary} size={17} style={styles.icon} />
+				<MediumText fontSize={20}>{time}: </MediumText>
+				<MediumText fontSize={20}>{item}</MediumText>
 			</View>
 		</View>
 	);
@@ -24,11 +24,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 7
-	},
-	title: {
-		fontSize: 23,
-		fontWeight: 'bold',
-		fontFamily: 'regular',
 	},
 	icon: {
 		paddingBottom: 5,

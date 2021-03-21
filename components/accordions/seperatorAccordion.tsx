@@ -45,13 +45,13 @@ const Accordion = ({ title, ProductAllergens, style, noTopBorder, onChangeText }
                     {!open ?
                     <FontAwesome 
                         name={'search'} 
-                        color={colors.text}
+                        color={colors.primary}
                         size={23} 
                         style={styles.icon} />
                         :
                         <FontAwesome 
                         name={'close'} 
-                        color={colors.text}
+                        color={colors.primary}
                         size={23} 
                         style={styles.icon} />
                     }

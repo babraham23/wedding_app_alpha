@@ -25,24 +25,24 @@ export const ValidateFoodChoices = (DATA: any) => {
     let valid = true;
 	let errors = [];
 	console.log('DATA', DATA)
-    if (!DATA.Starter) {
+    if (!DATA.starter) {
 		valid = false;
 		errors.push({
-			name: 'StarterError',
+			name: 'starterError',
 			error: 'Starter is required.',
 		});
     }
-    if (!DATA.Main) {
+    if (!DATA.main) {
 		valid = false;
 		errors.push({
-			name: 'MainError',
+			name: 'mainError',
 			error: 'Main is required.',
 		});
     }
-    if (!DATA.Dessert) {
+    if (!DATA.dessert) {
 		valid = false;
 		errors.push({
-			name: 'DessertError',
+			name: 'dessertError',
 			error: 'Dessert is required.',
 		});
     }

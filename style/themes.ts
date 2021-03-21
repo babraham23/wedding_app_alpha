@@ -13,7 +13,8 @@ export const CustomDefaultTheme = {
         border: '#AFAFB2',
         // // card: '#BADE71',
         // text: '#232323',
-        primary: '#014421',
+        // primary: '#014421',
+        primary: '#026b34',
         seperator: '#e2e3e4',
 
         blue: '#22cbff',

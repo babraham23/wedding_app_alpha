@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 		height: 50,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: 20,
+		borderRadius: 15,
         marginHorizontal: 10
 	},
 	clearWrapper: {
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 'bold',
 		color: '#fff',
+        
 	},
 });
 

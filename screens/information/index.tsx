@@ -20,6 +20,7 @@ const InformationScreen = ({ navigation }: any) => {
     const title = `Welcome ${userInfo.username}.`;
     const [ info, setInfo ] = React.useState([]);
     const [ shedule, setShedule ] = React.useState([]);
+    const [ Name, setName ]: any = React.useState('')
     
     const getInformation = () => {
         Get_Information()
@@ -33,6 +34,12 @@ const InformationScreen = ({ navigation }: any) => {
         })
         .catch(err => alert(err))
     }
+
+    const getLocalData = async () => {
+		let result: any = await SecureStore.getItemAsync('userDetails');
+		result = JSON.parse(result);
+		if (result) setName(result.username);
+	};
 
     // const getFood = () => {
     //     Get_Seating()
@@ -53,13 +60,18 @@ const InformationScreen = ({ navigation }: any) => {
 
     React.useEffect(() => {
         getInformation()
+        getLocalData()
     }, [])
+
 
     
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
-                <BoldText style={styles.title}>{title}</BoldText>
+                <View style={{ flexDirection: 'row'}} >
+                    <BoldText style={styles.title}>Welcome </BoldText>
+                    <BoldText color={colors.primary} >{Name}.</BoldText>
+                </View>
                 {/* <Separator /> */}
 
                 <View style={styles.aboutWrapper}>

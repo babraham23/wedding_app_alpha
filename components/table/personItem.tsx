@@ -8,7 +8,7 @@ const PersonItem = ({ style, guest }: any) => {
 	const { colors } = useTheme();
 	return (
 		<View style={styles.wrapper}>
-			<FontAwesome name={'cards-diamond-outline'} color={colors.text} size={15} style={styles.icon} />
+			<FontAwesome name={'cards-diamond-outline'} color={colors.primary} size={15} style={styles.icon} />
 			<Text style={[styles.title, { color: colors.text }]} >{guest}</Text>
 		</View>
 	);

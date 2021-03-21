@@ -7,11 +7,10 @@ import FoodCheckBoxes from '../checkbox/foodCheckBoxes';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 
-const FoodCard = ({ style, title, handleOption }: any) => {
-	// console.log('food_courses -->', food_courses)
+const FoodCard = ({ style, title, handleOption, options }: any) => {
+    console.log('options -->', options[0])
 	const { colors }: any = useTheme();
-	const [check, toggleCheck] = React.useState(false);
-    const [ option1, setOption1 ] = React.useState(true);
+    const [ option1, setOption1 ] = React.useState(false);
     const [ option2, setOption2 ] = React.useState(false);
     const [ option3, setOption3 ] = React.useState(false);
 	const handleCheck = (option: any) => {
@@ -50,7 +49,7 @@ const FoodCard = ({ style, title, handleOption }: any) => {
 							<View style={[styles.check, { backgroundColor: colors.background }]}>
 								{option1 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
-										<Feather name={'check'} color={colors.text} size={40} />
+										<Feather name={'check'} color={colors.primary} size={40} />
 									</Animatable.View>
 								) : null}
 							</View>
@@ -58,7 +57,7 @@ const FoodCard = ({ style, title, handleOption }: any) => {
 
 						<View style={styles.contentWrapper}>
 							<BoldText fontSize={20}>Option 1 Title</BoldText>
-							<Text style={[styles.description, { color: colors.text }]}>Option 1 description</Text>
+							<Text style={[styles.description, { color: colors.text }]}>{options[0].description}</Text>
 						</View>
 					</View>
                     <View style={[styles.wrapper]}>
@@ -70,7 +69,7 @@ const FoodCard = ({ style, title, handleOption }: any) => {
 							<View style={[styles.check, { backgroundColor: colors.background }]}>
 								{option2 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
-										<Feather name={'check'} color={colors.text} size={40} />
+										<Feather name={'check'} color={colors.primary} size={40} />
 									</Animatable.View>
 								) : null}
 							</View>
@@ -90,7 +89,7 @@ const FoodCard = ({ style, title, handleOption }: any) => {
 							<View style={[styles.check, { backgroundColor: colors.background }]}>
 								{option3 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
-										<Feather name={'check'} color={colors.text} size={40} />
+										<Feather name={'check'} color={colors.primary} size={40} />
 									</Animatable.View>
 								) : null}
 							</View>
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
 	check: {
 		height: 50,
 		width: 50,
-		borderRadius: 20,
+		borderRadius: 15,
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderWidth: 2,
