@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Alert } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
 import { BoldText, MediumText } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import FoodCard from '../../components/cards/foodCard'
 import StandardButton from  '../../components/buttons/standardButton';
-import { Get_Information, Get_Starters, Get_Foods, Get_Option_Ones } from '../../functions/api'
+import { Get_Foods, Post_Orders } from '../../functions/api'
 import { ValidateFoodChoices } from '../../functions/validators'
+import * as SecureStore from 'expo-secure-store';
 
 
 // const foodData = [
@@ -40,19 +42,41 @@ import { ValidateFoodChoices } from '../../functions/validators'
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const title = 'Food Selection';
-    const description = "Please select an item for each meal"
+    const description = "Please select an option for each meal"
     const [ foodData, setFoodData ] = React.useState([])
     const [ starter, setStarter ] = React.useState("");
     const [ main, setMain ] = React.useState("");
     const [ dessert, setDessert ] = React.useState("");
+    const userInfo: any = useSelector((state: any) => state.userReducer)
 
     const getFood = () => {
         Get_Foods()
         .then(res => {
-            console.log('res -->', res.data)
+            // console.log('res -->', res.data)
             setFoodData(res.data)
         })
         .catch(err => alert(err))
+    }
+
+    const postOrders = async () => {
+        const choices = {
+            starter,
+            main,
+            dessert,
+            guest: userInfo.username
+        }
+        Post_Orders(choices)
+        .then(res => {
+            console.log('post res -->', res.data)
+            storeOrderPlaced()
+            ConfirmationAlert()
+            // setFoodData(res.data)
+        })
+        .catch(err => alert(err))
+    }
+
+    const storeOrderPlaced = async () => {
+        await SecureStore.setItemAsync('orderPlaced', 'orderPlaced');
     }
 
     const handleOption = (type:any, option: any) => {
@@ -66,7 +90,8 @@ const FoodScreen = ({ navigation }: any) => {
         const choices = {
             starter,
             main,
-            dessert
+            dessert,
+            guest: userInfo.username
         }
         const ValidateStep = ValidateFoodChoices(choices);
         console.log('v -->', ValidateStep)
@@ -84,18 +109,32 @@ const FoodScreen = ({ navigation }: any) => {
 
     const showAlert = () => {
         Alert.alert(
-            'Are you happy with your selection?',
-            'Once your selection has been submitted it cannot be changed.',
+            'Confirm Selection?',
+            'Once your options have been submitted it cannot be changed.',
             [
                 {
-                    text: 'Confirm Selection',
-                    onPress: (() => {}),
+                    text: 'Yes',
+                    onPress: (() => postOrders()),
                     // style: 'cancel',
                 },
                 {
                     text: 'Cancel',
                     onPress: () => {},
                     style: 'cancel',
+                },
+            ],
+        );
+    }
+
+    const ConfirmationAlert = () => {
+        Alert.alert(
+            'Thank you!',
+            'Your order has been submitted',
+            [
+                {
+                    text: 'Ok',
+                    onPress: (() => navigation.navigate('HomeScreen')),
+                    // style: 'cancel',
                 },
             ],
         );

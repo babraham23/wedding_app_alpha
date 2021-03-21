@@ -21,7 +21,7 @@ const InformationScreen = ({ navigation }: any) => {
     const [ info, setInfo ] = React.useState([]);
     const [ shedule, setShedule ] = React.useState([]);
     const [ Name, setName ]: any = React.useState('')
-    
+    console.log('userInfo ->', userInfo)
     const getInformation = () => {
         Get_Information()
         .then(res => {
@@ -35,11 +35,11 @@ const InformationScreen = ({ navigation }: any) => {
         .catch(err => alert(err))
     }
 
-    const getLocalData = async () => {
-		let result: any = await SecureStore.getItemAsync('userDetails');
-		result = JSON.parse(result);
-		if (result) setName(result.username);
-	};
+    // const getLocalData = async () => {
+	// 	let result: any = await SecureStore.getItemAsync('userDetails');
+	// 	result = JSON.parse(result);
+	// 	if (result) setName(result.username);
+	// };
 
     // const getFood = () => {
     //     Get_Seating()
@@ -60,7 +60,7 @@ const InformationScreen = ({ navigation }: any) => {
 
     React.useEffect(() => {
         getInformation()
-        getLocalData()
+        // getLocalData()
     }, [])
 
 
@@ -70,7 +70,7 @@ const InformationScreen = ({ navigation }: any) => {
 			<View style={styles.container}>
                 <View style={{ flexDirection: 'row'}} >
                     <BoldText style={styles.title}>Welcome </BoldText>
-                    <BoldText color={colors.primary} >{Name}.</BoldText>
+                    <BoldText color={colors.primary} >{userInfo.username}.</BoldText>
                 </View>
                 {/* <Separator /> */}
 

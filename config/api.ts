@@ -5,11 +5,6 @@ export const LOG_IN = `${BASE_API_URL}/auth/local`;
 export const INFO = `${BASE_API_URL}/infos`;
 export const SCHEDULE = `${BASE_API_URL}/schedules`;
 export const SEATING = `${BASE_API_URL}/tables`;
-
-
-
-
 export const FOODS = `${BASE_API_URL}/foods`;
-export const OPTION_ONES = `${BASE_API_URL}/optionones`;
-export const STARTERS = `${BASE_API_URL}/starters`;
+export const ORDERS = `${BASE_API_URL}/orders`;
 export const ACCOMODATION = `${BASE_API_URL}/accommodations`;

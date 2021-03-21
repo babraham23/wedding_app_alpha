@@ -8,7 +8,7 @@ const TableItem = ({ tableNo, guests, style }: any) => {
 	const { colors } = useTheme();
 	return (
 		<View style={[style, styles.cardWrapper]}>
-			<BoldText style={styles.title} >Table {tableNo}</BoldText>
+			<BoldText color={colors.primary} style={[styles.title]} >Table {tableNo}</BoldText>
 			<View style={[styles.container, { backgroundColor: colors.card }]}>
 				<View style={styles.wrapper}>
                     {guests.map((item: any) => {

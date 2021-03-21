@@ -8,7 +8,6 @@ import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 
 const FoodCard = ({ style, title, handleOption, options }: any) => {
-    console.log('options -->', options[0])
 	const { colors }: any = useTheme();
     const [ option1, setOption1 ] = React.useState(false);
     const [ option2, setOption2 ] = React.useState(false);

@@ -12,6 +12,7 @@ import SplashScreen from '../screens/auth/splash';
 import AuthFormScreen from '../screens/auth/authForm';
 import HomeScreen from '../screens/home';
 import FoodScreen from '../screens/food/food'
+import ConfirmationScreen from '../screens/food/confirmarionScreen';
 import InformationScreen from '../screens/information'
 import TableScreen from '../screens/tables'
 
@@ -55,6 +56,7 @@ const ScreenStack = ({}) => (
 		<RootStack.Screen name="HomeScreen" component={HomeScreen} />
         <RootStack.Screen name="InformationScreen" component={InformationScreen} />
         <RootStack.Screen name="FoodScreen" component={FoodScreen} />
+        <RootStack.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
         <RootStack.Screen name="TableScreen" component={TableScreen} />
 	</RootStack.Navigator>
 );

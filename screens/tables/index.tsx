@@ -30,7 +30,7 @@ const TableScreen = ({ navigation }: any) => {
         Get_Seating()
         .then(res => {
             setTables(res.data)
-            // console.log('food -->', res.data)
+            console.log('tables -->', res.data)
         })
         .catch(err => alert(err))
     }
@@ -40,8 +40,19 @@ const TableScreen = ({ navigation }: any) => {
     }, [])
 
     const searchData = (text: any) => {
+        const findItemNested = (arr: any, itemId: any, nestingKey: any) => (
+            arr.reduce((a: any, item: any) => {
+              if (a) return a;
+              if (item.id === itemId) return item;
+              if (item[nestingKey]) return findItemNested(item[nestingKey], itemId, nestingKey)
+            }, null)
+          );
+        //   const res = findItemNested(array, 959, "children");
+        //   console.log(res);
+
+        
 		// const FILTERED_DATA = tables.filter((item: any) => {
-		// 	const itemData = item.guests[0].toLowerCase();
+		// 	const itemData = item.guests.toLowerCase();
 		// 	return itemData.indexOf(text.toLowerCase()) > -1;
 		// });
         // console.log(FILTERED_DATA)

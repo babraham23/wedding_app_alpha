@@ -12,11 +12,11 @@ import {foodData } from '../../components/foodSlider/dummyData';
 import {ValidateFoodChoices} from '../../functions/validators'
 import {FoodModel} from '../../_models/food.model';
 
-const FoodScreen = ({ navigation }: any) => {
+const ConfirmationScreen = ({ navigation }: any) => {
 	const { colors } = useTheme();
     const [ { Starter, Main, Dessert }, setState ] = React.useState(new FoodModel())
 	const title = 'Food';
-    const description = 'Scroll from right to left to view, tap to select'
+    const description = 'Confirmation Screen'
     const handleValidation = () => {
         const data = { Starter, Main, Dessert }
         const ValidateStep = ValidateFoodChoices(data)
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default FoodScreen;
+export default ConfirmationScreen;

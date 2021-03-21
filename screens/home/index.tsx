@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
-import { useTheme } from '@react-navigation/native';
+import { useTheme, useIsFocused } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,20 +13,40 @@ import { SET_USER } from '../../state/reducers/userReducer';
 const Home = ({ navigation }: any) => {
 	const dispatch = useDispatch();
 	const { colors }: any = useTheme();
+    const [ orderPlaced, setOrderPlaced ] = React.useState(null)
+    // const isFocused = useIsFocused();
 	const y = useSharedValue(0);
 	const onScroll = useAnimatedScrollHandler({
 		onScroll: ({ contentOffset: { y: value } }) => {
 			y.value = value;
 		},
 	});
+    const getLocalData = async () => {
+        let orderPlaced: any = await SecureStore.getItemAsync('orderPlaced');
+        if (orderPlaced) setOrderPlaced(orderPlaced)
+		let result: any = await SecureStore.getItemAsync('userDetails');
+		result = JSON.parse(result);
+		if (result) dispatch({ type: SET_USER, payload: result });
+	};
 	const signOut = async () => {
 		dispatch({ type: SET_USER, payload: {} });
 		await SecureStore.setItemAsync('token', '');
 		navigation.navigate('SplashScreen');
 	};
 	const handleNavigate = (route: any) => {
-		navigation.navigate(route);
+        // if (route == 'FoodScreen' && orderPlaced) {
+        //     navigation.navigate('ConfirmationScreen')
+        // } else 
+        navigation.navigate(route);
+		
 	};
+    const clearToken = async () => {
+        await SecureStore.setItemAsync('orderPlaced', '');
+    }
+    React.useEffect(() => {
+        // console.log(isFocused)
+        getLocalData()
+    })
 	return (
 		<>
 			<StatusBar hidden />

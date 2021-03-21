@@ -1,6 +1,6 @@
 import { HTTP } from './http';
 import * as SecureStore from 'expo-secure-store';
-import { REGISTER, LOG_IN, INFO, ACCOMODATION, SCHEDULE, FOODS, SEATING, STARTERS, OPTION_ONES } from '../config/api';
+import { REGISTER, LOG_IN, INFO, ACCOMODATION, SCHEDULE, FOODS, SEATING, ORDERS } from '../config/api';
 
 export const RegisterUser = (DATA: any) => {
 	return HTTP({
@@ -45,20 +45,13 @@ export const Get_Foods = async () => {
 	});
 };
 
-export const Get_Starters = async () => {
+export const Post_Orders = async (DATA: any) => {
     const token = await SecureStore.getItemAsync('token');
+    console.log('DATA -->', DATA)
 	return HTTP({
-		Method: 'GET',
-		Url: STARTERS,
-		Headers: { Authorization: token }
-	});
-};
-
-export const Get_Option_Ones = async () => {
-    const token = await SecureStore.getItemAsync('token');
-	return HTTP({
-		Method: 'GET',
-		Url: OPTION_ONES,
+		Method: 'POST',
+		Url: ORDERS,
+        Data: DATA,
 		Headers: { Authorization: token }
 	});
 };
