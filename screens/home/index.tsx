@@ -34,10 +34,10 @@ const Home = ({ navigation }: any) => {
 		navigation.navigate('SplashScreen');
 	};
 	const handleNavigate = (route: any) => {
-        // if (route == 'FoodScreen' && orderPlaced) {
-        //     navigation.navigate('ConfirmationScreen')
-        // } else 
-        navigation.navigate(route);
+        if (route == 'FoodScreen' && orderPlaced) {
+            navigation.navigate('ConfirmationScreen')
+        } else navigation.navigate(route);
+        
 		
 	};
     const clearToken = async () => {
