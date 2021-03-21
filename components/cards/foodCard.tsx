@@ -56,7 +56,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option 1 Title</BoldText>
+							<BoldText fontSize={20}>Option 1</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[0].description}</Text>
 						</View>
 					</View>
@@ -76,8 +76,8 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option 2 Title</BoldText>
-							<Text style={[styles.description, { color: colors.text }]}>Option 2 description</Text>
+							<BoldText fontSize={20}>Option 2</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>{options[1].description}</Text>
 						</View>
 					</View>
                     <View style={[styles.wrapper]}>
@@ -96,8 +96,8 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option Vegan</BoldText>
-							<Text style={[styles.description, { color: colors.text }]}>Option Vegan description</Text>
+							<BoldText fontSize={20}>Vegan Option</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>{options[2].description}</Text>
 						</View>
 					</View>
 				</View>

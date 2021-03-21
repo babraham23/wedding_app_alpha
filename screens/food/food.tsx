@@ -9,54 +9,53 @@ import { Get_Information, Get_Starters, Get_Foods, Get_Option_Ones } from '../..
 import { ValidateFoodChoices } from '../../functions/validators'
 
 
-const foodData = [
-    {
-        title: 'Starter',
-        options: [
-            { description: 'Optionsvsv 1 Starter' },
-            { description: 'Option 2 Starter' },
-            { description: 'Vegan Starter description' },
-        ]
-    },
-    {
-        title: 'Main',
-        options: [
-            { description: 'Main 1 Main' },
-            { description: 'Main 2 description' },
-            { description: 'Vegan Option Main' },
-        ]
-    },
-    {
-        title: 'Dessert',
-        options: [
-            { description: 'Dessert 1 description' },
-            { description: 'Dessert 2 description' },
-            { description: 'Vegan Dessert description' },
-        ]
-    }
-]
+// const foodData = [
+//     {
+//         title: 'Starter',
+//         options: [
+//             { description: 'Optionsvsv 1 Starter' },
+//             { description: 'Option 2 Starter' },
+//             { description: 'Vegan Starter description' },
+//         ]
+//     },
+//     {
+//         title: 'Main',
+//         options: [
+//             { description: 'Main 1 Main' },
+//             { description: 'Main 2 description' },
+//             { description: 'Vegan Option Main' },
+//         ]
+//     },
+//     {
+//         title: 'Dessert',
+//         options: [
+//             { description: 'Dessert 1 description' },
+//             { description: 'Dessert 2 description' },
+//             { description: 'Vegan Dessert description' },
+//         ]
+//     }
+// ]
 
 
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const title = 'Food Selection';
     const description = "Please select an item for each meal"
-    // const [ foodData, setFoodData ] = React.useState([])
+    const [ foodData, setFoodData ] = React.useState([])
     const [ starter, setStarter ] = React.useState("");
     const [ main, setMain ] = React.useState("");
     const [ dessert, setDessert ] = React.useState("");
 
     const getFood = () => {
-        Get_Starters()
+        Get_Foods()
         .then(res => {
-            // console.log('res -->', res.data)
-            // setFoodData(res.data)
+            console.log('res -->', res.data)
+            setFoodData(res.data)
         })
         .catch(err => alert(err))
     }
 
     const handleOption = (type:any, option: any) => {
-        console.log('type -->', type)
             if (type == "Starter") setStarter(option)
             if (type == 'Main') setMain(option)
             if (type == 'Dessert') setDessert(option)
@@ -102,35 +101,18 @@ const FoodScreen = ({ navigation }: any) => {
         );
     }
 
-    // console.log('foodData -->', foodData)
 	return (
 		<ScrollContextProvider title={title}>
 			<View style={styles.container}>
-                {/* <BoldText style={styles.title}>{title}</BoldText> */}
-                {/* <Separator /> */}
 
                 <View style={styles.aboutWrapper}>
-                    {/* <BoldText style={styles.header} center>Information</BoldText> */}
                     <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
                 </View>
 
                 {foodData.map((item: any, i: any) => {
-                    return <FoodCard title={item.title} options={item.options} handleOption={(option: any) => handleOption(item.title, option)} />
+                    return <FoodCard title={item.title} key={item.id} options={item.meals} handleOption={(option: any) => handleOption(item.title, option)} />
                 })}
                 
-
-                {/* <FoodCard title={'Starter'} handleOption={(option: any) => handleOption('Starter', option)} />
-                <FoodCard title={'Main'} handleOption={(option: any) => handleOption('Main', option)} />
-                <FoodCard title={'Dessert'} handleOption={(option: any) => handleOption('Dessert', option)} /> */}
-
-                {/* <FoodCard title={'Main'} />
-                <FoodCard title={'Dessert'} /> */}
-
-
-                {/* {foodData.map((item: any) => {
-                    return <FoodCard foodType={item.title} key={item.id} title={item.title} food_courses={item.food_courses} />
-                })}
-                 */}
                 <StandardButton onPress={() => handleValidation()} style={styles.button} title={'Submit'} />
 
 			</View>
