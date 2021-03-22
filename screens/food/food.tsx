@@ -133,7 +133,7 @@ const FoodScreen = ({ navigation }: any) => {
             [
                 {
                     text: 'Ok',
-                    onPress: (() => navigation.navigate('HomeScreen')),
+                    onPress: (() => navigation.navigate('ConfirmationScreen')),
                     // style: 'cancel',
                 },
             ],
@@ -149,6 +149,7 @@ const FoodScreen = ({ navigation }: any) => {
                 </View>
 
                 {foodData.map((item: any, i: any) => {
+                    // console.log('food item -->', item)
                     return <FoodCard title={item.title} key={item.id} options={item.meals} handleOption={(option: any) => handleOption(item.title, option)} />
                 })}
                 

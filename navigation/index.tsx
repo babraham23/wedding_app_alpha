@@ -21,6 +21,7 @@ import TableScreen from '../screens/tables'
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
 	const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
+    console.log('colorScheme -->', colorScheme)
 	// const theme = CustomDefaultTheme
 	// const theme = CustomDarkTheme
 	return (

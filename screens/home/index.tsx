@@ -13,7 +13,7 @@ import { SET_USER } from '../../state/reducers/userReducer';
 const Home = ({ navigation }: any) => {
 	const dispatch = useDispatch();
 	const { colors }: any = useTheme();
-    const [ orderPlaced, setOrderPlaced ] = React.useState(null)
+    const [ orderPlaced, setOrderPlaced ] = React.useState('')
     // const isFocused = useIsFocused();
 	const y = useSharedValue(0);
 	const onScroll = useAnimatedScrollHandler({
@@ -22,6 +22,7 @@ const Home = ({ navigation }: any) => {
 		},
 	});
     const getLocalData = async () => {
+        console.log('calling')
         let orderPlaced: any = await SecureStore.getItemAsync('orderPlaced');
         if (orderPlaced) setOrderPlaced(orderPlaced)
 		let result: any = await SecureStore.getItemAsync('userDetails');
@@ -34,7 +35,7 @@ const Home = ({ navigation }: any) => {
 		navigation.navigate('SplashScreen');
 	};
 	const handleNavigate = (route: any) => {
-        if (route == 'FoodScreen' && orderPlaced) {
+        if (route == 'FoodScreen' && orderPlaced != '') {
             navigation.navigate('ConfirmationScreen')
         } else navigation.navigate(route);
         
@@ -61,7 +62,7 @@ const Home = ({ navigation }: any) => {
 						<Item onPress={() => handleNavigate(item.route)} item={item} key={index} y={y} index={index} />
 					))}
 					<View style={[styles.logoutWrapper, { backgroundColor: '#014421' }]}>
-						<TouchableOpacity style={styles.logout} onPress={() => signOut()}>
+						<TouchableOpacity style={styles.logout} onPress={() => clearToken()}>
 							<Text style={styles.text}>Logout</Text>
 						</TouchableOpacity>
 					</View>

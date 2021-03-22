@@ -21,7 +21,6 @@ const InformationScreen = ({ navigation }: any) => {
     const [ info, setInfo ] = React.useState([]);
     const [ shedule, setShedule ] = React.useState([]);
     const [ Name, setName ]: any = React.useState('')
-    console.log('userInfo ->', userInfo)
     const getInformation = () => {
         Get_Information()
         .then(res => {

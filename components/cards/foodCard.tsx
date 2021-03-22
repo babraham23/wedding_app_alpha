@@ -12,24 +12,36 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
     const [ option1, setOption1 ] = React.useState(false);
     const [ option2, setOption2 ] = React.useState(false);
     const [ option3, setOption3 ] = React.useState(false);
+    const [ option4, setOption4 ] = React.useState(false);
+    // console.log('food item -->', options)
 	const handleCheck = (option: any) => {
 		if (option == 1) {
             setOption1(true)
             setOption2(false)
             setOption3(false)
+            setOption4(false)
             handleOption(1)
         }
         if (option == 2) {
             setOption1(false)
             setOption2(true)
             setOption3(false)
+            setOption4(false)
             handleOption(2)
         }
         if (option == 3) {
             setOption1(false)
             setOption2(false)
+            setOption4(false)
             setOption3(true)
             handleOption(3)
+        }
+        if (option == 4) {
+            setOption1(false)
+            setOption2(false)
+            setOption3(false)
+            setOption4(true)
+            handleOption(4)
         }
 	};
 	return (
@@ -39,7 +51,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 			</View>
 			<View style={[styles.card, { backgroundColor: colors.card }]}>
 				<View style={[style, styles.container]}>
-					<View style={[styles.wrapper]}>
+					{options[0] ? <View style={[styles.wrapper]}>
 						<TouchableOpacity
 							onPress={() => handleCheck(1)}
 							activeOpacity={0.5}
@@ -58,8 +70,8 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							<BoldText fontSize={20}>Option 1</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[0].description}</Text>
 						</View>
-					</View>
-                    <View style={[styles.wrapper]}>
+					</View> : null}
+                    {options[1] ? <View style={[styles.wrapper]}>
 						<TouchableOpacity
 							onPress={() => handleCheck(2)}
 							activeOpacity={0.5}
@@ -78,8 +90,8 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							<BoldText fontSize={20}>Option 2</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[1].description}</Text>
 						</View>
-					</View>
-                    <View style={[styles.wrapper]}>
+					</View> : null}
+                    {options[2] ? <View style={[styles.wrapper]}>
 						<TouchableOpacity
 							onPress={() => handleCheck(3)}
 							activeOpacity={0.5}
@@ -95,10 +107,30 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Vegan Option</BoldText>
+							<BoldText fontSize={20}>Vegan</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[2].description}</Text>
 						</View>
-					</View>
+					</View> : null}
+                    {options[3] ? <View style={[styles.wrapper]}>
+						<TouchableOpacity
+							onPress={() => handleCheck(4)}
+							activeOpacity={0.5}
+							style={[styles.checkboxWrapper]}
+						>
+							<View style={[styles.check, { backgroundColor: colors.background }]}>
+								{option4 ? (
+									<Animatable.View animation={'bounceIn'} style={[style]}>
+										<Feather name={'check'} color={colors.primary} size={40} />
+									</Animatable.View>
+								) : null}
+							</View>
+						</TouchableOpacity>
+
+						<View style={styles.contentWrapper}>
+							<BoldText fontSize={20}>Gluten Free</BoldText>
+							<Text style={[styles.description, { color: colors.text }]}>{options[3].description}</Text>
+						</View>
+					</View>: null}
 				</View>
 			</View>
 		</View>
