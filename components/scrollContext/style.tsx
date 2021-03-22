@@ -64,9 +64,9 @@ export const styles = StyleSheet.create({
 		fontWeight: '600',
     },
     menu: {
-        height: 25,
-        width: 40,
-        resizeMode: 'stretch',
+        height: 85,
+        width: 85,
+        resizeMode: 'contain',
         marginLeft: 25
     },
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Animated, Easing, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Animated, Easing, Image, TouchableOpacity, useColorScheme } from 'react-native'
 import { useScroller } from './scrollContext'
 import { styles } from './style'
 import { useTheme } from '@react-navigation/native';
@@ -11,6 +11,9 @@ export const Header = (props: any) => {
     const { colors }: any = useTheme()
     const navigation: any = useNavigation();
   const { titleShowing, opacity } = useScroller();
+  const scheme = useColorScheme();
+  console.log('scheme -->', scheme)
+
 
   const [titleFade] = useState(
     new Animated.Value(0)
@@ -66,7 +69,8 @@ export const Header = (props: any) => {
 
       <View style={styles.headerRight}>
         {/* {props.headerRight !== undefined && props.headerRight} */}
-        {/* <Image source={require('../../assets/images/mcdonalds_logo.png')} style={styles.menu} /> */}
+            {scheme === 'dark' ? <Image source={require('../../assets/images/logoDark.png')} style={styles.menu} /> :
+            <Image source={require('../../assets/images/logo.png')} style={styles.menu} /> }
       </View>
       
     </View>

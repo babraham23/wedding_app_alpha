@@ -9,7 +9,8 @@ import StandardButton from '../../components/buttons/standardButton';
 import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../../state/reducers/userReducer';
-import { Get_Information, Get_Shedule, Get_Foods, Get_Seating } from '../../functions/api'
+import { Get_Information, Get_Shedule, Get_Foods, Get_Seating } from '../../functions/api';
+import Logo from '../../components/logo'
 
 
 const ConfirmationScreen = ({ navigation }: any) => {
@@ -26,6 +27,10 @@ const ConfirmationScreen = ({ navigation }: any) => {
                 </View>
                 {/* <Separator /> */}
                     <MediumText fontSize={20} center style={styles.header}>Your order has been placed</MediumText>
+
+                <View>
+                    <Logo style={{ alignSelf: 'center', marginTop: 80 }} />
+                </View>
 		</ScrollView>
 	);
 }

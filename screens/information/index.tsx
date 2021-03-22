@@ -75,7 +75,7 @@ const InformationScreen = ({ navigation }: any) => {
 
                 <View style={styles.aboutWrapper}>
                     {info.map((item: any) => {
-                        return <MediumText key={item.id} center>{item.description}</MediumText>
+                        return <MediumText fontSize={20} key={item.id} center>{item.description}</MediumText>
                     })}
                     
                 </View>
