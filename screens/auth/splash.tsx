@@ -4,6 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import { MediumText, LightText, BoldText, Separator } from '../../style/typography';
 import * as Animatable from 'react-native-animatable';
 import * as SecureStore from 'expo-secure-store';
+import Logo from '../../components/logo'
 
 
 const SplashScreen = ({ navigation }: any) => {
@@ -26,7 +27,12 @@ const SplashScreen = ({ navigation }: any) => {
 					<BoldText fontSize={40}>{title1}</BoldText>
 					<BoldText fontSize={40}>{title2}</BoldText>
 				</View>
+
+                <Logo style={styles.logo} />
+
+
 			</View>
+
 
 			<Animatable.View animation="fadeInUpBig">
 				<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('AuthFormScreen', { type: 'Register' })} style={[styles.button, {backgroundColor: colors.primary }]}>
@@ -54,6 +60,10 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    logo: { 
+        alignSelf: 'center', 
+        marginTop: 50 
     }
 });
 

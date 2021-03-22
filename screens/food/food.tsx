@@ -67,9 +67,8 @@ const FoodScreen = ({ navigation }: any) => {
         }
         Post_Orders(choices)
         .then(res => {
-            console.log('post res -->', res.data)
             storeOrderPlaced()
-            ConfirmationAlert()
+            navigation.navigate('ConfirmationScreen')
             // setFoodData(res.data)
         })
         .catch(err => alert(err))
@@ -126,19 +125,6 @@ const FoodScreen = ({ navigation }: any) => {
         );
     }
 
-    const ConfirmationAlert = () => {
-        Alert.alert(
-            'Thank you!',
-            'Your order has been submitted',
-            [
-                {
-                    text: 'Ok',
-                    onPress: (() => navigation.navigate('ConfirmationScreen')),
-                    // style: 'cancel',
-                },
-            ],
-        );
-    }
 
 	return (
 		<ScrollContextProvider title={title}>

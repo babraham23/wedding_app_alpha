@@ -30,7 +30,6 @@ const TableScreen = ({ navigation }: any) => {
         Get_Seating()
         .then(res => {
             setTables(res.data)
-            console.log('tables -->', res.data)
         })
         .catch(err => alert(err))
     }

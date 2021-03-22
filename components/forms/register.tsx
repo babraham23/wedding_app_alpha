@@ -25,7 +25,6 @@ const RegisterForm = () => {
         }
         RegisterUser(data)
         .then(res => {
-            console.log('res -->', res.data)
             storeToken(res.data.jwt)
             saveUserDetailsLocally()
             dispatch({ type: SET_USER, payload: res.data.user })

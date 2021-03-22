@@ -1,29 +1,31 @@
 import React from 'react';
 import { View, Image, StyleSheet, useColorScheme } from 'react-native';
 import { useTheme, useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
-
+import * as Animatable from 'react-native-animatable';
 
 const Logo = ({ label, onPress, style }: any) => {
-    const { border, colors }: any = useTheme()
-    const navigation = useNavigation()
-    const scheme = useColorScheme()
+	const { border, colors }: any = useTheme();
+	const navigation = useNavigation();
+	const scheme = useColorScheme();
 	return (
 		<View style={[style, styles.container]}>
-            {scheme === 'dark' ? <Image source={require('../../assets/images/logoDark.png')} style={styles.logo} /> :
-            <Image source={require('../../assets/images/logo.png')} style={styles.logo} /> }
+			<Animatable.View animation="bounceIn">
+				{scheme === 'dark' ? (
+					<Image source={require('../../assets/images/logoDark.png')} style={styles.logo} />
+				) : (
+					<Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+				)}
+			</Animatable.View>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	container: {
-
+	container: {},
+	logo: {
+		height: 250,
+		width: 250,
+		resizeMode: 'contain',
 	},
-    logo: {
-        height: 250,
-        width: 250,
-        resizeMode: 'contain'
-    }
 });
 export default Logo;

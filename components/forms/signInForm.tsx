@@ -26,7 +26,6 @@ const SignInForm = () => {
         console.log('data -->', data)
         LogInUser(data)
         .then(res => {
-            console.log('res -->', res.data)
             storeToken(res.data.jwt)
             storeUser(res.data.user.username)
             dispatch({ type: SET_USER, payload: res.data.user })

@@ -29,7 +29,7 @@ const ConfirmationScreen = ({ navigation }: any) => {
                     <MediumText fontSize={20} center style={styles.header}>Your order has been placed</MediumText>
 
                 <View>
-                    <Logo style={{ alignSelf: 'center', marginTop: 80 }} />
+                    <Logo style={styles.logo} />
                 </View>
 		</ScrollView>
 	);
@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
     title: {
         // paddingLeft: 20,
         paddingBottom: 10
+    },
+    logo: { 
+        alignSelf: 'center', 
+        marginTop: 80 
     }
 });
 

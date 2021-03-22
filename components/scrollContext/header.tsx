@@ -12,8 +12,6 @@ export const Header = (props: any) => {
     const navigation: any = useNavigation();
   const { titleShowing, opacity } = useScroller();
   const scheme = useColorScheme();
-  console.log('scheme -->', scheme)
-
 
   const [titleFade] = useState(
     new Animated.Value(0)
