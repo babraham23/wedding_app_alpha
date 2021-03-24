@@ -109,7 +109,7 @@ const FoodScreen = ({ navigation }: any) => {
     const showAlert = () => {
         Alert.alert(
             'Confirm Selection?',
-            'Once your options have been submitted it cannot be changed.',
+            'Once your options have been submitted they cannot be changed.',
             [
                 {
                     text: 'Yes',

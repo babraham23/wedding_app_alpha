@@ -5,6 +5,7 @@ import { MediumText, LightText, BoldText, Separator } from '../../style/typograp
 import * as Animatable from 'react-native-animatable';
 import * as SecureStore from 'expo-secure-store';
 import Logo from '../../components/logo'
+import { Get_Options_Ones } from '../../functions/api'
 
 
 const SplashScreen = ({ navigation }: any) => {
@@ -16,6 +17,14 @@ const SplashScreen = ({ navigation }: any) => {
         if (token) {
             navigation.navigate('HomeScreen');
         }
+    }
+    const TestApi = () => {
+        Get_Options_Ones()
+        .then(res => {
+            console.log('res -->', res.data)
+            // setFoodData(res.data)
+        })
+        .catch(err => alert(err))
     }
     React.useEffect(() => {
         checkToken()
@@ -35,6 +44,9 @@ const SplashScreen = ({ navigation }: any) => {
 
 
 			<Animatable.View animation="fadeInUpBig">
+                <TouchableOpacity activeOpacity={0.8} onPress={() => TestApi()}>
+					<BoldText color={'white'} fontSize={20}>Api</BoldText>
+				</TouchableOpacity>
 				<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('AuthFormScreen', { type: 'Register' })} style={[styles.button, {backgroundColor: colors.primary }]}>
 					<BoldText color={'white'} fontSize={20}>REGISTER</BoldText>
 				</TouchableOpacity>

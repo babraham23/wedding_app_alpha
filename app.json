@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ciabatta",
-    "slug": "ciabatta",
+    "name": "ems_wedding",
+    "slug": "Ems Wedding",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -24,7 +24,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#014421"
+        "backgroundColor": "#014421",
+        "package": "com.wedding.ems"
       }
     },
     "web": {
