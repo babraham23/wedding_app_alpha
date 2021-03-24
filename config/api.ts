@@ -1,5 +1,5 @@
 // export const BASE_API_URL = "http://localhost:1337";
-export const BASE_API_URL = 'https://powerful-bastion-38544.herokuapp.com/' 
+export const BASE_API_URL = 'https://powerful-bastion-38544.herokuapp.com' 
 
 
 export const REGISTER = `${BASE_API_URL}/auth/local/register`;

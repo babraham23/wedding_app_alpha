@@ -44,9 +44,9 @@ const SplashScreen = ({ navigation }: any) => {
 
 
 			<Animatable.View animation="fadeInUpBig">
-                <TouchableOpacity activeOpacity={0.8} onPress={() => TestApi()}>
+                {/* <TouchableOpacity activeOpacity={0.8} onPress={() => TestApi()}>
 					<BoldText color={'white'} fontSize={20}>Api</BoldText>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
 				<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('AuthFormScreen', { type: 'Register' })} style={[styles.button, {backgroundColor: colors.primary }]}>
 					<BoldText color={'white'} fontSize={20}>REGISTER</BoldText>
 				</TouchableOpacity>
