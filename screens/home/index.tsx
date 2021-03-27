@@ -14,6 +14,8 @@ const Home = ({ navigation }: any) => {
 	const dispatch = useDispatch();
 	const { colors }: any = useTheme();
     const [ orderPlaced, setOrderPlaced ] = React.useState('')
+    const foodReducer: any = useSelector((state: any) => state.foodReducer)
+    console.log('foodReducer -->', foodReducer)
     // const isFocused = useIsFocused();
 	const y = useSharedValue(0);
 	const onScroll = useAnimatedScrollHandler({
@@ -61,7 +63,7 @@ const Home = ({ navigation }: any) => {
 						<Item onPress={() => handleNavigate(item.route)} item={item} key={index} y={y} index={index} />
 					))}
 					<View style={[styles.logoutWrapper, { backgroundColor: '#014421' }]}>
-						<TouchableOpacity style={styles.logout} onPress={() => signOut()}>
+						<TouchableOpacity style={styles.logout} onPress={() => clearToken()}>
 							<Text style={styles.text}>Logout</Text>
 						</TouchableOpacity>
 					</View>

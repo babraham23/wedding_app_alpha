@@ -16,6 +16,7 @@ import TableScreen from '../screens/tables';
 import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../state/reducers/userReducer';
+import { SET_HAS_ORDERED } from '../state/reducers/foodReducer';
 
 
 
@@ -41,10 +42,11 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 	// const theme = CustomDarkTheme
 
     const getLocalData = async () => {
+        let orderPlaced = await SecureStore.getItemAsync('orderPlaced');
         let result: any = await SecureStore.getItemAsync('userDetails');
         result = JSON.parse(result);
-        console.log('user details local -->', result)
         if (result) dispatch({ type: SET_USER, payload: result });
+        if (orderPlaced) dispatch({ type: SET_HAS_ORDERED, payload: true });
     };
 
 

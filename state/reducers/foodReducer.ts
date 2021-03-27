@@ -1,23 +1,15 @@
-export const ADD_STARTER = 'ADD_STARTER';
-export const ADD_MAIN = 'ADD_MAIN';
-export const ADD_DESSERT = 'ADD_DESSERT';
+export const SET_HAS_ORDERED = 'SET_HAS_ORDERED';
 
 const initialState: any = {
-    Starter: '',
-    Main: '',
-    Dessert: ''
+    hasOrdered: false
 }
 
 const foodReducer = (state = initialState, action: any) => {
-    switch(action.type) { 
-        case ADD_STARTER:
-            return Object.assign({}, state, { Starter: action.payload });
-        case ADD_MAIN:
-            return Object.assign({}, state, { Main: action.payload });
-        case ADD_DESSERT:
-            return Object.assign({}, state, { Dessert: action.payload });
+    switch(action.type) {
+        case SET_HAS_ORDERED:
+            return Object.assign({}, state, { hasOrdered: action.payload } );
     }
-    return state;
+    return state
 }
 
-export default foodReducer;
+export default foodReducer

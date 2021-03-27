@@ -67,7 +67,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option 1</BoldText>
+							<BoldText textDecorationLine={'underline'} style={styles.option} fontSize={20}>Option 1</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[0].description}</Text>
 						</View>
 					</View> : null}
@@ -87,7 +87,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Option 2</BoldText>
+							<BoldText textDecorationLine={'underline'} style={styles.option} fontSize={20}>Option 2</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[1].description}</Text>
 						</View>
 					</View> : null}
@@ -107,7 +107,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Vegan</BoldText>
+							<BoldText textDecorationLine={'underline'} style={styles.option} fontSize={20}>Vegan</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[2].description}</Text>
 						</View>
 					</View> : null}
@@ -127,7 +127,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 						</TouchableOpacity>
 
 						<View style={styles.contentWrapper}>
-							<BoldText fontSize={20}>Gluten Free</BoldText>
+							<BoldText textDecorationLine={'underline'} style={styles.option} fontSize={20}>Gluten Free</BoldText>
 							<Text style={[styles.description, { color: colors.text }]}>{options[3].description}</Text>
 						</View>
 					</View>: null}
@@ -142,6 +142,9 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginTop: 40,
 	},
+    option: {
+        paddingBottom: 10
+    },
 	card: {
 		minHeight: 150,
 		width: '100%',
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
 	description: {
 		marginTop: 5,
 		fontFamily: 'Bold',
-		fontSize: 16,
+		fontSize: 20,
 		lineHeight: 20,
 		// textAlign: 'center'
 	},

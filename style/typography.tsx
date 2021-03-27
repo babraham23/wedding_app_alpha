@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 
-export const BoldText = ({ style, children, color, fontSize, center }: any) => {
+export const BoldText = ({ style, children, color, fontSize, center, textDecorationLine }: any) => {
     const { colors }: any = useTheme()
     const styles = StyleSheet.create({
         BoldText: { 
@@ -11,6 +11,7 @@ export const BoldText = ({ style, children, color, fontSize, center }: any) => {
             color: color ? color : colors.text,
             fontSize: fontSize ? fontSize : 30,
             textAlign: center ? 'center' : 'left',
+            textDecorationLine: textDecorationLine ? textDecorationLine : 'none'
             // lineHeight: 20
         }
     })

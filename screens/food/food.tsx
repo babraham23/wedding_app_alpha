@@ -10,10 +10,12 @@ import { Get_Foods, Post_Orders } from '../../functions/api'
 import { ValidateFoodChoices } from '../../functions/validators'
 import * as SecureStore from 'expo-secure-store';
 import ActivityIndicatorElement from '../../components/activityIndicator';
+import { SET_HAS_ORDERED } from '../../state/reducers/foodReducer';
 
 
 const FoodScreen = ({ navigation }: any) => {
-    const { colors } = useTheme()
+    const { colors } = useTheme();
+    const dispatch = useDispatch();
     const title = 'Food Selection';
     // const description = "Please select an option for each meal"
     const description = "Please note: If you are selecting a vegan or gluten free option please ensure this is consistent throughout all courses. For example, if selecting a vegan main, you must also chose a vegan starter and dessert."
@@ -33,28 +35,6 @@ const FoodScreen = ({ navigation }: any) => {
         .catch(err => alert(err))
     }
 
-    const postOrders = async () => {
-        const choices = {
-            starter,
-            main,
-            dessert,
-            guest: userInfo.username
-        }
-        setLoading(true)
-        Post_Orders(choices)
-        .then(res => {
-            storeOrderPlaced()
-            navigation.navigate('ConfirmationScreen')
-            // setFoodData(res.data)
-        })
-        .catch(err => alert(err))
-        setLoading(false)
-    }
-
-    const storeOrderPlaced = async () => {
-        await SecureStore.setItemAsync('orderPlaced', 'orderPlaced');
-    }
-
     const handleOption = (type:any, option: any) => {
             if (type == "Starter") setStarter(option)
             if (type == 'Main') setMain(option)
@@ -70,13 +50,34 @@ const FoodScreen = ({ navigation }: any) => {
             guest: userInfo.username
         }
         const ValidateStep = ValidateFoodChoices(choices);
-        console.log('v -->', ValidateStep)
 		if (ValidateStep.valid) {
 			showAlert()
 		} else {
             alert('Please select an option for each meal')
 		}
-        console.log('choices -->', choices)
+    }
+
+    const postOrders = async () => {
+        const choices = {
+            starter,
+            main,
+            dessert,
+            guest: userInfo.username
+        }
+        setLoading(true)
+        Post_Orders(choices)
+        .then(res => {
+            storeOrderPlaced()
+            dispatch({ type: SET_HAS_ORDERED, payload: true })
+            navigation.navigate('ConfirmationScreen')
+            // setFoodData(res.data)
+        })
+        .catch(err => alert(err))
+        setLoading(false)
+    }
+
+    const storeOrderPlaced = async () => {
+        await SecureStore.setItemAsync('orderPlaced', 'orderPlaced');
     }
 
     React.useEffect(() => {
@@ -113,7 +114,6 @@ const FoodScreen = ({ navigation }: any) => {
                 </View>
 
                 {foodData.map((item: any, i: any) => {
-                    // console.log('food item -->', item)
                     return <FoodCard title={item.title} key={item.id} options={item.meals} handleOption={(option: any) => handleOption(item.title, option)} />
                 })}
                 
