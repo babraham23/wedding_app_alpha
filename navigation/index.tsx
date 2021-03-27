@@ -13,22 +13,13 @@ import FoodScreen from '../screens/food/food';
 import ConfirmationScreen from '../screens/food/confirmarionScreen';
 import InformationScreen from '../screens/information';
 import TableScreen from '../screens/tables';
+import * as SecureStore from 'expo-secure-store';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_USER } from '../state/reducers/userReducer';
 
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-	const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
-	// const theme = CustomDefaultTheme
-	// const theme = CustomDarkTheme
-	return (
-		<NavigationContainer linking={LinkingConfiguration} theme={theme}>
-			{/* <RootNavigator /> */}
-            <ScreenStack />
-		</NavigationContainer>
-	);
-}
 
 const RootStack = createStackNavigator();
-
 const ScreenStack = ({}) => (
 	<RootStack.Navigator headerMode="none">
         <RootStack.Screen name="SplashScreen" component={SplashScreen} />
@@ -43,23 +34,28 @@ const ScreenStack = ({}) => (
 
 
 
+export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+    const dispatch = useDispatch()
+	const theme = colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme;
+	// const theme = CustomDefaultTheme
+	// const theme = CustomDarkTheme
+
+    const getLocalData = async () => {
+        let result: any = await SecureStore.getItemAsync('userDetails');
+        result = JSON.parse(result);
+        console.log('user details local -->', result)
+        if (result) dispatch({ type: SET_USER, payload: result });
+    };
 
 
+    React.useEffect(() => {
+        getLocalData()
+    })
 
-
-
-// // A root stack navigator is often used for displaying modals on top of all other content
-// // Read more here: https://reactnavigation.org/docs/modal
-// const Stack = createStackNavigator<RootStackParamList>();
-
-// function RootNavigator() {
-// 	const Drawer = createDrawerNavigator();
-// 	return (
-// 		<Drawer.Navigator screenOptions={{ headerShown: false }}>
-//             <Drawer.Screen name="Home" component={Home} />
-//             <Drawer.Screen name="InformationScreen" component={InformationScreen} />
-//             <Drawer.Screen name="FoodScreen" component={FoodScreen} />
-//             <Drawer.Screen name="TableScreen" component={TableScreen} />
-// 		</Drawer.Navigator>
-// 	);
-// }
+	return (
+		<NavigationContainer linking={LinkingConfiguration} theme={theme}>
+			{/* <RootNavigator /> */}
+            <ScreenStack />
+		</NavigationContainer>
+	);
+}

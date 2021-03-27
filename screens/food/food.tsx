@@ -9,44 +9,19 @@ import StandardButton from  '../../components/buttons/standardButton';
 import { Get_Foods, Post_Orders } from '../../functions/api'
 import { ValidateFoodChoices } from '../../functions/validators'
 import * as SecureStore from 'expo-secure-store';
-
-
-// const foodData = [
-//     {
-//         title: 'Starter',
-//         options: [
-//             { description: 'Optionsvsv 1 Starter' },
-//             { description: 'Option 2 Starter' },
-//             { description: 'Vegan Starter description' },
-//         ]
-//     },
-//     {
-//         title: 'Main',
-//         options: [
-//             { description: 'Main 1 Main' },
-//             { description: 'Main 2 description' },
-//             { description: 'Vegan Option Main' },
-//         ]
-//     },
-//     {
-//         title: 'Dessert',
-//         options: [
-//             { description: 'Dessert 1 description' },
-//             { description: 'Dessert 2 description' },
-//             { description: 'Vegan Dessert description' },
-//         ]
-//     }
-// ]
+import ActivityIndicatorElement from '../../components/activityIndicator';
 
 
 const FoodScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const title = 'Food Selection';
-    const description = "Please select an option for each meal"
+    // const description = "Please select an option for each meal"
+    const description = "Please note: If you are selecting a vegan or gluten free option please ensure this is consistent throughout all courses. For example, if selecting a vegan main, you must also chose a vegan starter and dessert."
     const [ foodData, setFoodData ] = React.useState([])
     const [ starter, setStarter ] = React.useState("");
     const [ main, setMain ] = React.useState("");
     const [ dessert, setDessert ] = React.useState("");
+    const [ loading, setLoading ] = React.useState(false)
     const userInfo: any = useSelector((state: any) => state.userReducer)
 
     const getFood = () => {
@@ -65,6 +40,7 @@ const FoodScreen = ({ navigation }: any) => {
             dessert,
             guest: userInfo.username
         }
+        setLoading(true)
         Post_Orders(choices)
         .then(res => {
             storeOrderPlaced()
@@ -72,6 +48,7 @@ const FoodScreen = ({ navigation }: any) => {
             // setFoodData(res.data)
         })
         .catch(err => alert(err))
+        setLoading(false)
     }
 
     const storeOrderPlaced = async () => {
@@ -123,11 +100,12 @@ const FoodScreen = ({ navigation }: any) => {
                 },
             ],
         );
-    }
+    }  
 
 
 	return (
 		<ScrollContextProvider title={title}>
+            {loading ? <ActivityIndicatorElement /> : null}
 			<View style={styles.container}>
 
                 <View style={styles.aboutWrapper}>

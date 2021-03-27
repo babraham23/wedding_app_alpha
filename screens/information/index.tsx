@@ -14,13 +14,13 @@ import { Get_Information, Get_Shedule, Get_Foods, Get_Seating } from '../../func
 const InformationScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
     const dispatch = useDispatch()
-    const userInfo: any = useSelector((state: any) => state.userReducer)
+    // const userInfo: any = useSelector((state: any) => state.userReducer)
     // console.log('userInfo -->', userInfo)
     // const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
-    const title = `Welcome ${userInfo.username}.`;
     const [ info, setInfo ] = React.useState([]);
     const [ shedule, setShedule ] = React.useState([]);
     const [ Name, setName ]: any = React.useState('')
+    const title = `Welcome ${Name}.`;
     const getInformation = () => {
         Get_Information()
         .then(res => {
@@ -34,32 +34,15 @@ const InformationScreen = ({ navigation }: any) => {
         .catch(err => alert(err))
     }
 
-    // const getLocalData = async () => {
-	// 	let result: any = await SecureStore.getItemAsync('userDetails');
-	// 	result = JSON.parse(result);
-	// 	if (result) setName(result.username);
-	// };
-
-    // const getFood = () => {
-    //     Get_Seating()
-    //     .then(res => {
-    //         // setInfo(res.data)
-    //         console.log('food -->', res.data)
-    //     })
-    //     .catch(err => alert(err))
-    // }
-
-    
-
-    // const signOut = async () => {
-    //     dispatch({ type: SET_USER, payload: {} })
-    //     await SecureStore.setItemAsync('token', '')
-    //     navigation.navigate('SplashScreen')
-    // }
+    const getLocalData = async () => {
+		let result: any = await SecureStore.getItemAsync('userDetails');
+		result = JSON.parse(result);
+		if (result) setName(result.username);
+	};
 
     React.useEffect(() => {
         getInformation()
-        // getLocalData()
+        getLocalData()
     }, [])
 
 
@@ -69,9 +52,12 @@ const InformationScreen = ({ navigation }: any) => {
 			<View style={styles.container}>
                 <View style={{ flexDirection: 'row'}} >
                     <BoldText style={styles.title}>Welcome </BoldText>
-                    <BoldText color={colors.primary} >{userInfo.username}.</BoldText>
+                    <BoldText color={colors.primary} >{Name}.</BoldText>
                 </View>
+
                 {/* <Separator /> */}
+
+                {/* <StandardButton onPress={() => getLocalData()} title={"DATA"} /> */}
 
                 <View style={styles.aboutWrapper}>
                     {info.map((item: any) => {
@@ -86,8 +72,6 @@ const InformationScreen = ({ navigation }: any) => {
                         return <TimeItem key={item.id} time={item.time} item={item.item} />
                     })}
                 </View>
-                {/* <StandardButton title={'getFood'} onPress={() => getFood()} /> */}
-                {/* <StandardButton title={'Sign Out'} onPress={() => signOut()} /> */}
 			</View>
 		</ScrollContextProvider>
 	);

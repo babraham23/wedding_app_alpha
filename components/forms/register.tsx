@@ -11,11 +11,14 @@ import { RegisterUser } from '../../functions/api'
 import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../../state/reducers/userReducer';
+import ActivityIndicatorElement from '../activityIndicator';
 
 const RegisterForm = () => {
 	const { colors }: any = useTheme();
     const dispatch = useDispatch();
     const navigation: any = useNavigation()
+    // const { data, loading } = this.state;
+    const [ loading, setLoading ] = React.useState(false)
     const [{ username, email, password, usernameError, emailError, passwordError }, setState] = React.useState(new RegisterModel())
     const handleRegister = async () => {
         const data = {
@@ -23,24 +26,26 @@ const RegisterForm = () => {
             email,
             password,
         }
+        setLoading(true)
         RegisterUser(data)
         .then(res => {
             storeToken(res.data.jwt)
-            saveUserDetailsLocally()
+            saveUserDetailsLocally(res.data.user)
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
         .catch(err => alert(err))
+        setLoading(false)
     }
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
     }
-    const saveUserDetailsLocally = async () => {
-		const userDetails = { username, email, password };
+    const saveUserDetailsLocally = async (userDetails: any) => {
 		await SecureStore.setItemAsync('userDetails', JSON.stringify(userDetails));
 	};
 	return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
+            {loading ? <ActivityIndicatorElement /> : null}
             <View style={styles.inputWrapper} >
             <BigInput 
                 title={`What's your name?`} 

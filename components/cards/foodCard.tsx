@@ -57,7 +57,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							activeOpacity={0.5}
 							style={[styles.checkboxWrapper]}
 						>
-							<View style={[styles.check, { backgroundColor: colors.background }]}>
+							<View style={[styles.check, { backgroundColor: colors.background, borderColor: colors.text }]}>
 								{option1 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
 										<Feather name={'check'} color={colors.primary} size={40} />
@@ -77,7 +77,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							activeOpacity={0.5}
 							style={[styles.checkboxWrapper]}
 						>
-							<View style={[styles.check, { backgroundColor: colors.background }]}>
+							<View style={[styles.check, { backgroundColor: colors.background, borderColor: colors.text }]}>
 								{option2 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
 										<Feather name={'check'} color={colors.primary} size={40} />
@@ -97,7 +97,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							activeOpacity={0.5}
 							style={[styles.checkboxWrapper]}
 						>
-							<View style={[styles.check, { backgroundColor: colors.background }]}>
+							<View style={[styles.check, { backgroundColor: colors.background, borderColor: colors.text }]}>
 								{option3 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
 										<Feather name={'check'} color={colors.primary} size={40} />
@@ -117,7 +117,7 @@ const FoodCard = ({ style, title, handleOption, options }: any) => {
 							activeOpacity={0.5}
 							style={[styles.checkboxWrapper]}
 						>
-							<View style={[styles.check, { backgroundColor: colors.background }]}>
+							<View style={[styles.check, { backgroundColor: colors.background, borderColor: colors.text }]}>
 								{option4 ? (
 									<Animatable.View animation={'bounceIn'} style={[style]}>
 										<Feather name={'check'} color={colors.primary} size={40} />

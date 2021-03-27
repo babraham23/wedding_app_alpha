@@ -11,11 +11,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../../state/reducers/userReducer';
 import { LogInUser } from '../../functions/api'
 import * as SecureStore from 'expo-secure-store';
+import ActivityIndicatorElement from '../activityIndicator';
 
 
 const SignInForm = () => {
 	const { colors }: any = useTheme();
     const navigation: any = useNavigation()
+    const [ loading, setLoading ] = React.useState(false)
     const dispatch = useDispatch()
     const [{ username, password, usernameError, passwordError }, setState] = React.useState(new SignInModel())
     const handleSignIn = async () => {
@@ -23,24 +25,27 @@ const SignInForm = () => {
             identifier: username,
             password,
         }
-        console.log('data -->', data)
+        setLoading(true)
         LogInUser(data)
         .then(res => {
+            console.log(res)
             storeToken(res.data.jwt)
-            storeUser(res.data.user.username)
+            storeUser(res.data.user)
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
         .catch(err => alert(err))
+        setLoading(false)
     }
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
     }
-    const storeUser = async (token: any) => {
-        await SecureStore.setItemAsync('user', token);
-    }
+    const storeUser = async (user: any) => {
+		await SecureStore.setItemAsync('userDetails', JSON.stringify(user));
+	};
     return (
 		<View style={[styles.container, { backgroundColor: colors.background }]}>
+            {loading ? <ActivityIndicatorElement /> : null}
             <View style={styles.inputWrapper} >
             <BigInput 
                 title={`What's your name or email?`} 

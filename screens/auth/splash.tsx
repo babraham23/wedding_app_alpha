@@ -31,7 +31,7 @@ const SplashScreen = ({ navigation }: any) => {
     })
 	return (
 		<>
-			<View style={[styles.container, { backgroundColor: colors.card }]}>
+			<View style={[styles.container, { backgroundColor: colors.background }]}>
 				<View style={styles.titleWrapper}>
 					<BoldText fontSize={40}>{title1}</BoldText>
 					<BoldText fontSize={40}>{title2}</BoldText>
@@ -41,7 +41,6 @@ const SplashScreen = ({ navigation }: any) => {
 
 
 			</View>
-
 
 			<Animatable.View animation="fadeInUpBig">
                 {/* <TouchableOpacity activeOpacity={0.8} onPress={() => TestApi()}>

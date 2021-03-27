@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ems_wedding",
+    "name": "Ems' Wedding",
     "slug": "ems_wedding",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,10 +19,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wedding.ems"
     },
     "android": {
-        "package": "com.wedding.ems"
+      "package": "com.wedding.ems"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

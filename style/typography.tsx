@@ -10,7 +10,8 @@ export const BoldText = ({ style, children, color, fontSize, center }: any) => {
             fontFamily: 'Bold', 
             color: color ? color : colors.text,
             fontSize: fontSize ? fontSize : 30,
-            textAlign: center ? 'center' : 'left'
+            textAlign: center ? 'center' : 'left',
+            // lineHeight: 20
         }
     })
     return <Text style={[style, styles.BoldText]} >{children}</Text>
