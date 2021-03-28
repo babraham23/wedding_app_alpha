@@ -73,7 +73,7 @@ const FoodScreen = ({ navigation }: any) => {
             // setFoodData(res.data)
         })
         .catch(err => alert(err))
-        setLoading(false)
+        .then(() => setLoading(false))    
     }
 
     const storeOrderPlaced = async () => {
@@ -110,7 +110,8 @@ const FoodScreen = ({ navigation }: any) => {
 			<View style={styles.container}>
 
                 <View style={styles.aboutWrapper}>
-                    <BoldText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</BoldText>
+                    <BoldText fontSize={20} style={{ paddingBottom: 20 }} center>Select your meal</BoldText>
+                    <MediumText fontSize={20} style={{ paddingHorizontal: 20 }} center>{description}</MediumText>
                 </View>
 
                 {foodData.map((item: any, i: any) => {

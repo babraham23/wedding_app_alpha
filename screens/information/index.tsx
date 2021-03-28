@@ -4,19 +4,13 @@ import { useTheme } from '@react-navigation/native';
 import { MediumText, LightText, BoldText, Separator } from '../../style/typography';
 import { ScrollContextProvider } from '../../components/scrollContext/scrollContext';
 import TimeItem from '../../components/schedule/timeItem';
-import StandardButton from '../../components/buttons/standardButton';
 import * as SecureStore from 'expo-secure-store';
-import { useSelector, useDispatch } from 'react-redux';
-import { SET_USER } from '../../state/reducers/userReducer';
-import { Get_Information, Get_Shedule, Get_Foods, Get_Seating } from '../../functions/api'
+import { Get_Information, Get_Shedule } from '../../functions/api'
 
 
 const InformationScreen = ({ navigation }: any) => {
     const { colors } = useTheme()
-    const dispatch = useDispatch()
-    // const userInfo: any = useSelector((state: any) => state.userReducer)
-    // console.log('userInfo -->', userInfo)
-    // const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad';
+
     const [ info, setInfo ] = React.useState([]);
     const [ shedule, setShedule ] = React.useState([]);
     const [ Name, setName ]: any = React.useState('')
@@ -55,10 +49,6 @@ const InformationScreen = ({ navigation }: any) => {
                     <BoldText color={colors.primary} >{Name}.</BoldText>
                 </View>
 
-                {/* <Separator /> */}
-
-                {/* <StandardButton onPress={() => getLocalData()} title={"DATA"} /> */}
-
                 <View style={styles.aboutWrapper}>
                     {info.map((item: any) => {
                         return <MediumText fontSize={20} key={item.id} center>{item.description}</MediumText>
@@ -66,12 +56,12 @@ const InformationScreen = ({ navigation }: any) => {
                     
                 </View>
 
-                <View style={styles.scheduleWrapper}>
+                {shedule.length ? <View style={styles.scheduleWrapper}>
                     <BoldText center style={styles.header}>Schedule</BoldText>
                     {shedule.map((item: any) => {
                         return <TimeItem key={item.id} time={item.time} item={item.item} />
                     })}
-                </View>
+                </View>: null}
 			</View>
 		</ScrollContextProvider>
 	);

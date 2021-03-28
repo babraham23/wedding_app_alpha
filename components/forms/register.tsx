@@ -12,6 +12,9 @@ import * as SecureStore from 'expo-secure-store';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_USER } from '../../state/reducers/userReducer';
 import ActivityIndicatorElement from '../activityIndicator';
+import { HTTP_ERROR } from '../../functions/http';
+import { ValidateRegister } from '../../functions/validators';
+
 
 const RegisterForm = () => {
 	const { colors }: any = useTheme();
@@ -20,6 +23,20 @@ const RegisterForm = () => {
     // const { data, loading } = this.state;
     const [ loading, setLoading ] = React.useState(false)
     const [{ username, email, password, usernameError, emailError, passwordError }, setState] = React.useState(new RegisterModel())
+    const handleValidation = () => {
+        // navigation.navigate()
+        const data = {
+            username,
+            email,
+            password,
+        }
+        const ValidateStep = ValidateRegister(data);
+		if (ValidateStep.valid) {
+			handleRegister()
+		} else {
+            alert('Please complete the form correctly.')
+		}
+    }
     const handleRegister = async () => {
         const data = {
             username,
@@ -34,8 +51,8 @@ const RegisterForm = () => {
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
-        .catch(err => alert(err))
-        setLoading(false)
+        .catch(err => alert(HTTP_ERROR(err)))
+        .then(() => setLoading(false))
     }
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
@@ -69,7 +86,7 @@ const RegisterForm = () => {
             </View>
             <StandardButton title={'Register'} style={{marginVertical: 50}} 
                 // onPress={() => navigation.navigate('HomeScreen')} 
-                onPress={() => handleRegister()}
+                onPress={() => handleValidation()}
             />
 		</View>
 	);

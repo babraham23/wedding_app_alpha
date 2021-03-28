@@ -12,6 +12,8 @@ import { SET_USER } from '../../state/reducers/userReducer';
 import { LogInUser } from '../../functions/api'
 import * as SecureStore from 'expo-secure-store';
 import ActivityIndicatorElement from '../activityIndicator';
+import { HTTP_ERROR } from '../../functions/http'
+import { ValidateSignIn } from '../../functions/validators';
 
 
 const SignInForm = () => {
@@ -20,6 +22,19 @@ const SignInForm = () => {
     const [ loading, setLoading ] = React.useState(false)
     const dispatch = useDispatch()
     const [{ username, password, usernameError, passwordError }, setState] = React.useState(new SignInModel())
+    const handleValidation = () => {
+        // navigation.navigate()
+        const data = {
+            username,
+            password,
+        }
+        const ValidateStep = ValidateSignIn(data);
+		if (ValidateStep.valid) {
+			handleSignIn()
+		} else {
+            alert('Please complete the form correctly.')
+		}
+    }
     const handleSignIn = async () => {
         const data = {
             identifier: username,
@@ -34,8 +49,8 @@ const SignInForm = () => {
             dispatch({ type: SET_USER, payload: res.data.user })
             navigation.navigate('HomeScreen')
         })
-        .catch(err => alert(err))
-        setLoading(false)
+        .catch(err => alert(HTTP_ERROR(err)))
+        .then(() => setLoading(false))
     }
     const storeToken = async (token: any) => {
         await SecureStore.setItemAsync('token', token);
@@ -61,7 +76,7 @@ const SignInForm = () => {
                 secureTextEntry={true}
             />
             </View>
-            <StandardButton title={'Sign In'} style={{ marginVertical: 50 }} onPress={() => handleSignIn()} />
+            <StandardButton title={'Sign In'} style={{ marginVertical: 50 }} onPress={() => handleValidation()} />
 		</View>
 	);
 };

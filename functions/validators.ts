@@ -53,57 +53,61 @@ export const ValidateFoodChoices = (DATA: any) => {
 }
 
 
-export const ValidateTableDetails = (DATA: any) => {
+export const ValidateRegister = (DATA: any) => {
     let valid = true;
 	let errors = [];
 	console.log('DATA', DATA)
-    if (!DATA.TableId) {
+    if (!DATA.username) {
 		valid = false;
 		errors.push({
-			name: 'TableIdError',
-			error: 'Table Number is required.',
+			name: 'usernameError',
+			error: 'Please enter your name.',
 		});
     }
-    if (!DATA.Name) {
-		valid = false;
-		errors.push({
-			name: 'NameError',
-			error: 'Name is required.',
-		});
-    }
-    if (DATA.Email && !IsEmail(DATA.Email)) {
+    if (DATA.email && !IsEmail(DATA.email)) {
         valid = false;
         errors.push({
-            name: "EmailError",
+            name: "emailError",
             error: "Email must be a valid email address."
         })
     }
-    if (!DATA.Email) {
+    if (!DATA.email) {
 		valid = false;
 		errors.push({
-			name: 'EmailError',
-			error: 'Email is required.',
+			name: 'emailError',
+			error: 'Please enter your email.',
 		});
     }
-    if (!DATA.Phone) {
+    if (!DATA.password) {
 		valid = false;
 		errors.push({
-			name: 'PhoneError',
-			error: 'Phone Number is required.',
+			name: 'passwordError',
+			error: 'Please enter your password.',
 		});
     }
-    if (!DATA.AgreedToPrivacy) {
+    return {
+		valid,
+		errors,
+	};
+}
+
+
+export const ValidateSignIn = (DATA: any) => {
+    let valid = true;
+	let errors = [];
+	console.log('DATA', DATA)
+    if (!DATA.username) {
 		valid = false;
 		errors.push({
-			name: 'AgreedToPrivacyError',
-			error: 'Privacy Policy is required.',
+			name: 'usernameError',
+			error: 'Please enter your name.',
 		});
     }
-    if (!DATA.AgreedToTerms) {
+    if (!DATA.password) {
 		valid = false;
 		errors.push({
-			name: 'AgreedToTermsError',
-			error: 'Terms Conditions is required.',
+			name: 'passwordError',
+			error: 'Please enter your password.',
 		});
     }
     return {

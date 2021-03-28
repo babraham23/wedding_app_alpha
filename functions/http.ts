@@ -28,7 +28,7 @@ export const HTTP_ERROR = (error: any, isAuth?: any) => {
                 err = "The details entered are incorrect." 
                 break;
             case 400:
-                err = error.response.data.Message || "Bad request. 400."
+                err = error.response.data.Message || "The details entered are incorrect"
                 break;
             case 500:
                 err = error.response.data.Message || "An unexpected error occurred. 500."
