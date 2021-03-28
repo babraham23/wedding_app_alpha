@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		alignItems: 'center',
 		justifyContent: 'center',
-		borderWidth: 2,
+		borderWidth: 0.5,
         // borderColor: 'grey'
 	},
 });

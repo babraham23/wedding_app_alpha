@@ -39,8 +39,6 @@ const Home = ({ navigation }: any) => {
         if (route == 'FoodScreen' && orderPlaced != '') {
             navigation.navigate('ConfirmationScreen')
         } else navigation.navigate(route);
-        
-		
 	};
     const clearToken = async () => {
         await SecureStore.setItemAsync('orderPlaced', '');
@@ -63,7 +61,7 @@ const Home = ({ navigation }: any) => {
 						<Item onPress={() => handleNavigate(item.route)} item={item} key={index} y={y} index={index} />
 					))}
 					<View style={[styles.logoutWrapper, { backgroundColor: '#014421' }]}>
-						<TouchableOpacity style={styles.logout} onPress={() => clearToken()}>
+						<TouchableOpacity style={styles.logout} onPress={() => signOut()}>
 							<Text style={styles.text}>Logout</Text>
 						</TouchableOpacity>
 					</View>
